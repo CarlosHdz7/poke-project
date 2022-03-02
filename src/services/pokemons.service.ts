@@ -11,4 +11,4 @@ const getPokemonById = async (id: number) => {
   return pokemon;
 };
 
-export default { getAllPokemons, getPokemonById };
+export { getAllPokemons, getPokemonById };

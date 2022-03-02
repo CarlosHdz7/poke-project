@@ -21,14 +21,8 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
-    'linebreak-style': [
-      'error',
-      process.platform === 'win32' ? 'windows' : 'unix',
-    ],
-    'react/jsx-filename-extension': [
-      2,
-      { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
-    ],
+    'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
+    'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'import/extensions': [
       'error',
       'ignorePackages',
@@ -53,5 +47,6 @@ module.exports = {
         html: true,
       },
     ],
+    'no-use-before-define': ['error', { functions: false, classes: false, variables: false }],
   },
 };

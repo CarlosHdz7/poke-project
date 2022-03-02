@@ -9,6 +9,7 @@ const AppRouter = () => (
     <Route path="pokemons" element={<PokemonsView />} />
     <Route path="pokemons/:id" element={<PokemonDetailView />} />
     <Route path="bookmarks" element={<BookmarksView />} />
+    <Route path="/" element={<PokemonsView />} />
   </Routes>
 );
 
