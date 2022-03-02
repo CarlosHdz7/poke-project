@@ -1,11 +1,6 @@
 import React from 'react';
+import AppRouter from './views/AppRouter';
 
-function App() {
-  return (
-    <div className="App">
-      Hello world
-    </div>
-  );
-}
+const App = () => <AppRouter />;
 
 export default App;
