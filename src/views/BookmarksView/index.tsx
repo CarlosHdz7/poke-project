@@ -1,5 +1,5 @@
 import React from 'react';
 
-const BookmarksView = () => <div>index</div>;
+const BookmarksView = () => <h1 className="title">Bookmarks</h1>;
 
 export default BookmarksView;

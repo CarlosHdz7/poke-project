@@ -1,0 +1,22 @@
+@import '../../../styles/settings.scss';
+
+.card {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.card .img-container {
+  //   background-color: rgba(255, 255, 255, 0.6);
+  background-color: #eee;
+  border-radius: 50%;
+  margin-top: 20px;
+  width: 120px;
+  height: 120px;
+}
+
+.card .img-container img {
+  margin-top: 20px;
+  max-width: 90%;
+}
