@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './index.scss';
+import pokeball from '../../../assets/pokeball.png';
 
 const Navbar = () => {
+  const activeClassName = 'active';
+  const itemClassName = 'navbar-container-item';
   const [sidebar, setSideBar] = useState<boolean>(false);
 
   const showSideBar = () => setSideBar(!sidebar);
@@ -14,19 +17,23 @@ const Navbar = () => {
           <i className="bi bi-list" />
         </button>
         <div className="navbar-container-options">
-          <Link to="/" className="navbar-container-item">
+          <NavLink to="/" className="navbar-container-item navbar-container-item__logo">
+            <img src={pokeball} alt="" className="navbar-image" />
             PokeApi
-          </Link>
-          <div className="d-flex">
-            <Link to="pokemons" className="navbar-container-item">
-              Pokemons
-            </Link>
-            <Link to="bookmarks" className="navbar-container-item">
+          </NavLink>
+          <div>
+            <NavLink
+              to="bookmarks"
+              className={({ isActive }) => (isActive ? `${itemClassName} ${activeClassName}` : itemClassName)}
+            >
               Bookmarks
-            </Link>
-            <Link to="bookmarks" className="navbar-container-item">
+            </NavLink>
+            <NavLink
+              to="about"
+              className={({ isActive }) => (isActive ? `${itemClassName} ${activeClassName}` : itemClassName)}
+            >
               About
-            </Link>
+            </NavLink>
           </div>
         </div>
       </div>
@@ -37,20 +44,19 @@ const Navbar = () => {
             <i className="bi bi-x-lg" />
           </button>
           <li className="side-menu__item">
-            <Link to="/">
-              {/* <i className={icon} /> */}
+            <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')} onClick={showSideBar}>
               <span>PokeApi</span>
-            </Link>
+            </NavLink>
           </li>
           <li className="side-menu__item">
-            <Link to="pokemons">
-              <span>Pokemons</span>
-            </Link>
-          </li>
-          <li className="side-menu__item">
-            <Link to="bookmarks">
+            <NavLink to="bookmarks" className={({ isActive }) => (isActive ? 'active' : '')} onClick={showSideBar}>
               <span>Bookmarks</span>
-            </Link>
+            </NavLink>
+          </li>
+          <li className="side-menu__item">
+            <NavLink to="about" className={({ isActive }) => (isActive ? 'active' : '')} onClick={showSideBar}>
+              <span>About</span>
+            </NavLink>
           </li>
         </ul>
       </nav>
