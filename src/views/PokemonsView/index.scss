@@ -8,8 +8,17 @@
   padding-bottom: 40px;
   box-sizing: border-box;
 }
+.searchbar-container {
+  position: relative;
+}
 
-.searchbar {
+.searchbar-container__icon {
+  position: absolute;
+  top: 11px;
+  left: 22px;
+}
+
+.searchbar-container__input {
   box-sizing: border-box;
   width: calc(100% - 20px);
   margin: 10px;
@@ -17,6 +26,7 @@
   margin-bottom: 20px;
   border: none;
   padding: 10px;
+  padding-left: 40px;
   border-radius: 8px;
   font-size: 20px;
 }
