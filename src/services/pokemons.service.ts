@@ -7,7 +7,7 @@ const getAllPokemons = async (filter: string = '') => {
   return pokemons;
 };
 
-const getPokemonById = async (id: number) => {
+const getPokemonById = async (id: string) => {
   const pokemon = await get<IPokemon>(`/pokemons/${id}`);
   return pokemon;
 };

@@ -16,8 +16,12 @@ const PokemonsView = () => {
   }, [filterState]);
 
   const getPokemons = async () => {
-    const pokemons = await getAllPokemons(filterState);
-    setPokemonsState(pokemons);
+    try {
+      const pokemons = await getAllPokemons(filterState);
+      setPokemonsState(pokemons);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleSearch = (value: string) => {
@@ -41,7 +45,7 @@ const PokemonsView = () => {
       </div>
       <div className="cards-container">
         {pokemonsState?.length !== 0 &&
-          pokemonsState?.map((pokemon: IPokemon) => <PokemonCard image={pokemon.image} name={pokemon.name} />)}
+          pokemonsState?.map(({image, name, id}: IPokemon) => <PokemonCard image={image} name={name} id={id} />)}
       </div>
 
       {!pokemonsState?.length && '...loading'}
