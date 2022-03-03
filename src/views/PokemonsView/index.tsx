@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import { useSearchParams } from 'react-router-dom';
 import PokemonCard from '../../components/general/PokemonCard';
 import IPokemon from '../../interfaces/IPokemon';
@@ -8,7 +9,7 @@ import './index.scss';
 const PokemonsView = () => {
   const [search, setSearch] = useSearchParams();
   const [pokemonsState, setPokemonsState] = useState<IPokemon[]>();
-  const [filterState, setFilterState] = useState(search.get('name') || '');
+  const [filterState, setFilterState] = useState(search.get('name')?.trim() || '');
 
   useEffect(() => {
     getPokemons();
@@ -20,8 +21,9 @@ const PokemonsView = () => {
   };
 
   const handleSearch = (value: string) => {
-    setFilterState(value);
-    setSearch(value ? { name: value } : {});
+    const pokemonName = value.trim();
+    setFilterState(pokemonName);
+    setSearch(pokemonName ? { name: pokemonName } : {});
   };
 
   return (
