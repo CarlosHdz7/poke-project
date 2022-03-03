@@ -1,28 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { useSearchParams } from 'react-router-dom';
 import PokemonCard from '../../components/general/PokemonCard';
+import useFetchPokemons from '../../hooks/useFetchPokemons';
 import IPokemon from '../../interfaces/IPokemon';
-import { getAllPokemons } from '../../services/pokemons.service';
 import './index.scss';
 
 const PokemonsView = () => {
   const [search, setSearch] = useSearchParams();
-  const [pokemonsState, setPokemonsState] = useState<IPokemon[]>();
   const [filterState, setFilterState] = useState(search.get('name')?.trim() || '');
-
-  useEffect(() => {
-    getPokemons();
-  }, [filterState]);
-
-  const getPokemons = async () => {
-    try {
-      const pokemons = await getAllPokemons(filterState);
-      setPokemonsState(pokemons);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { data: pokemons, loading, error } = useFetchPokemons(filterState);
 
   const handleSearch = (value: string) => {
     const pokemonName = value.trim();
@@ -44,11 +31,13 @@ const PokemonsView = () => {
         />
       </div>
       <div className="cards-container">
-        {pokemonsState?.length !== 0 &&
-          pokemonsState?.map(({image, name, id}: IPokemon) => <PokemonCard image={image} name={name} id={id} />)}
+        {!loading &&
+          pokemons?.map(({image, name, id}: IPokemon) => <PokemonCard key={id} image={image} name={name} id={id} />)}
       </div>
 
-      {!pokemonsState?.length && '...loading'}
+      {loading && '...loading'}
+
+      {error && 'An error has ocurred ...'}
     </>
   );
 };
