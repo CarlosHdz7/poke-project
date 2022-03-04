@@ -9,7 +9,7 @@ const PokemonDetailView = () => {
 
   return (
     <>
-      {!loading && 
+      {!loading && !error && 
         <div className='detail-container'>
           <div className='detail-container-options'>
             <i className="bi bi-arrow-left-circle-fill" />
