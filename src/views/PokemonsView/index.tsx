@@ -1,44 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { useSearchParams } from 'react-router-dom';
 import Pagination from '../../components/general/Pagination';
 import PokemonCard from '../../components/general/PokemonCard';
 import useFetchPokemons from '../../hooks/useFetchPokemons';
-import usePagination from '../../hooks/usePagination';
 import IPokemon from '../../interfaces/IPokemon';
 import './index.scss';
 
 const PokemonsView = () => {
   const [search, setSearch] = useSearchParams();
-  const [filterState, setFilterState] = useState(search.get('name')?.trim() || '');
-  const { data: pokemons, loading, error } = useFetchPokemons(filterState);
-
-  const paginationConfig = {
-    offset: 0,
-    currentPageElements: [],
-    elementsPerPage: 10,
-    pagesCount: 1,
-    allElements: [],
-    totalElementsCount: 0,
-  };
-
-  const { paginationConfigState, handlePageClick, setPaginationConfigState } = usePagination(paginationConfig);
-
-  console.log('o', paginationConfigState)
-  console.log('o', handlePageClick)
-  console.log('o', setPaginationConfigState)
-
-  useEffect(() => {
-    setPaginationConfigState((prev) => ({ ...prev, allElements: pokemons, totalElementsCount: pokemons?.length || 0, offset: 0 }));
-  }, [pokemons])
-  
-
-
+  const [nameState, setNameState] = useState(search.get('name')?.trim() || '');
+  const [pageState, setPageState] = useState(search.get('page')?.trim() || '1');
+  const { data: pokemons, loading, error } = useFetchPokemons({ name: nameState, page: pageState });
 
   const handleSearch = (value: string) => {
     const pokemonName = value.trim();
-    setFilterState(pokemonName);
+    setNameState(pokemonName);
     setSearch(pokemonName ? { name: pokemonName } : {});
+  };
+
+  const handlePage = (value: string) => {
+    const pageNumber = value.trim();
+    setPageState(pageNumber);
+    setSearch(pageNumber ? { page: pageNumber } : {});
   };
 
   return (
@@ -47,28 +31,29 @@ const PokemonsView = () => {
       <div className="searchbar-container">
         <i className="bi bi-search searchbar-container__icon" />
         <input
-          value={filterState}
+          value={nameState}
           type="text"
           className="searchbar-container__input"
           placeholder="Search ..."
           onChange={(e) => handleSearch(e.target.value)}
         />
       </div>
-      <div className="cards-container">
-        {!loading && !error &&
-          pokemons?.map(({image, name, id}: IPokemon) => <PokemonCard key={id} image={image} name={name} id={id} />)}
-      </div>
 
-      <Pagination 
-        offset={paginationConfigState.offset}
-        currentPageElements={paginationConfigState.currentPageElements}
-        elementsPerPage={paginationConfigState.elementsPerPage}
-        pagesCount={paginationConfigState.pagesCount}
-        allElements={paginationConfigState.allElements}
-        totalElementsCount={paginationConfigState.totalElementsCount}
-      />
+      {!loading && !error && (
+        <div className="main-container">
+          {!nameState && <Pagination handlePage={handlePage} />}
 
-      {!pokemons?.length && 'No results'}
+          <div className="cards-container">
+            {pokemons?.map(({ image, name, id }: IPokemon) => (
+              <PokemonCard key={id} image={image} name={name} id={id} />
+            ))}
+          </div>
+
+          {!nameState && <Pagination handlePage={handlePage} />}
+        </div>
+      )}
+
+      {!pokemons?.length && !loading && 'No results'}
 
       {loading && '...loading'}
 

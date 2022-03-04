@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import IPokemon from "../interfaces/IPokemon";
+import { IFilter } from '../interfaces/IFilter';
+import IPokemon from '../interfaces/IPokemon';
 import { getAllPokemons } from '../services/pokemons.service';
 
-const useFetchPokemons = (filter: string) => {
+const useFetchPokemons = (filter: IFilter) => {
   const isMounted = useRef(true);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<IPokemon[]>();
@@ -12,8 +13,8 @@ const useFetchPokemons = (filter: string) => {
     getPokemons();
     return () => {
       isMounted.current = false;
-    }
-  }, [filter])
+    };
+  }, [filter.name, filter.page]);
 
   const getPokemons = async () => {
     setLoading(true);
@@ -26,9 +27,8 @@ const useFetchPokemons = (filter: string) => {
     }
     setLoading(false);
   };
-  
 
   return { loading, data, error };
-}
+};
 
 export default useFetchPokemons;

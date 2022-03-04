@@ -1,14 +1,19 @@
-import React from 'react'
-import { IUsePagination } from '../../../interfaces/IPagination';
+import React from 'react';
+import './index.scss';
 
-const Pagination = (props: IUsePagination) => {
-  const { offset, allElements, totalElementsCount, elementsPerPage, pagesCount } = props;
-  console.log('offset',offset)
-  console.log('allElements',allElements)
-  console.log('totalElementsCount',totalElementsCount)
-  console.log('elementsPerPage',elementsPerPage)
-  console.log('pagesCount',pagesCount)
-  return (<div>index</div>)
-}
+const Pagination = (props: any) => {
+  const { handlePage } = props;
+  const pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  return (
+    <div className="pagination">
+      {pages.map((page) => (
+        <button className="pagination__button" type="button" onClick={() => handlePage(page.toString())}>
+          {page}
+        </button>
+      ))}
+    </div>
+  );
+};
 
 export default Pagination;
