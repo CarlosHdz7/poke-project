@@ -1,16 +1,25 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import useFetchPokemon from '../../hooks/useFetchPokemon';
 import IPokemon from '../../interfaces/IPokemon';
 import './index.scss';
 import { addBookmark } from '../../store/bookmarks/bookmarks.action';
+import { RootState } from '../../rootReducer';
+import { IBookmark } from '../../interfaces/IBookmark';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 const PokemonDetailView = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { data: pokemon, loading, error } = useFetchPokemon(id || '');
+  const [, setBookmarksState] = useLocalStorage<IBookmark[]>('bookmarks', []);
+  const bookmarks: IBookmark[] = useSelector((state: RootState) => state.bookmarks);
+
+  useEffect(() => {
+    setBookmarksState(bookmarks);
+  }, [bookmarks]);
 
   const backToList = () => {
     navigate(-1);

@@ -8,6 +8,8 @@ const bookmarksReducer = (state: IBookmark[] = initialState, action: any = {}) =
       return [...state, action.payload];
     case 'REMOVE_BOOKMARK':
       return state.filter((bookmark: any) => bookmark.uid !== action.payload.uid);
+    case 'SET_BOOKMARK':
+      return [...action.payload];
     default:
       return state;
   }

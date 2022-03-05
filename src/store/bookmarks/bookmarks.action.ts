@@ -15,4 +15,11 @@ const removeBookmark = (data: IBookmark) => (dispatch: (action: { type: string; 
   });
 };
 
-export { addBookmark, removeBookmark };
+const setBookmarks = (data: IBookmark[]) => (dispatch: (action: { type: string; payload: IBookmark[] }) => void) => {
+  dispatch({
+    type: 'SET_BOOKMARK',
+    payload: data,
+  });
+};
+
+export { addBookmark, removeBookmark, setBookmarks };
