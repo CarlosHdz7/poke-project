@@ -3,7 +3,6 @@ import IPokemon from '../interfaces/IPokemon';
 import { get } from './fetchData';
 
 const getAllPokemons = async (filter: IFilter) => {
-  console.log(filter);
   const url =
     filter.name !== ''
       ? `/pokemons?name_like=${filter.name}`

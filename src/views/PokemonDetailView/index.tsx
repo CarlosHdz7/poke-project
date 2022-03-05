@@ -1,24 +1,37 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import useFetchPokemon from '../../hooks/useFetchPokemon';
+import IPokemon from '../../interfaces/IPokemon';
 import './index.scss';
+import { addBookmark } from '../../store/bookmarks/bookmarks.action';
 
 const PokemonDetailView = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { data: pokemon, loading, error } = useFetchPokemon(id || '');
 
   const backToList = () => {
     navigate(-1);
   };
 
+  const handleAddBookmark = (pokemonInfo: IPokemon) => {
+    dispatch(
+      addBookmark({
+        uid: '1',
+        pokemon: pokemonInfo,
+      }),
+    );
+  };
+
   return (
     <>
-      {!loading && !error && (
+      {!loading && pokemon && !error && (
         <div className="detail-container">
           <div className="detail-container-options">
             <i className="bi bi-arrow-left-circle-fill" onClick={backToList} aria-hidden="true" />
-            <i className="bi bi-heart-fill" />
+            <i className="bi bi-heart-fill" onClick={() => handleAddBookmark(pokemon)} aria-hidden="true" />
           </div>
           <h1 className="detail-container-title">{pokemon?.name}</h1>
           <div className="inner-detail-container">
