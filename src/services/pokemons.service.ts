@@ -7,9 +7,7 @@ const getAllPokemons = async (filter: IFilter) => {
   const url =
     filter.name !== ''
       ? `/pokemons?name_like=${filter.name}`
-      : `/pokemons?_page=${filter.page ? filter.page : '1'}&_limit=10`;
-
-  console.log(url);
+      : `/pokemons?_page=${filter.page ? filter.page : '1'}&_limit=20`;
 
   const pokemons = await get<IPokemon[]>(url);
   return pokemons;

@@ -11,7 +11,7 @@
   background: $white;
   min-height: 150px;
   border-radius: $radius-container;
-  background-color: $turcoise;
+  background-color: $wet-asphalt;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -29,19 +29,21 @@
   box-sizing: border-box;
   justify-content: space-between;
 
-  .bi-arrow-left-circle-fill, .bi-heart-fill {
-   color: $white;
-   font-size: 30px; 
-   cursor: pointer;
+  .bi-arrow-left-circle-fill,
+  .bi-heart-fill {
+    color: $white;
+    font-size: 40px;
+    cursor: pointer;
   }
 }
 
 .inner-detail-container {
   width: 100%;
-  height: 150px;
+  min-height: 150px;
   border-radius: $radius-container;
   background-color: $white;
   padding: 20px;
+  padding-top: 120px;
   position: relative;
   display: block;
   box-sizing: border-box;
@@ -57,4 +59,10 @@
   left: 0;
   right: 0;
   text-align: center;
+}
+
+.stats {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }

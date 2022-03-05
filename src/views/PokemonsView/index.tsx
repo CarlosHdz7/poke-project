@@ -41,15 +41,15 @@ const PokemonsView = () => {
 
       {!loading && !error && (
         <div className="main-container">
-          {!nameState && <Pagination handlePage={handlePage} />}
+          {!nameState && <Pagination handlePage={handlePage} currentPage={pageState} />}
 
           <div className="cards-container">
-            {pokemons?.map(({ image, name, id }: IPokemon) => (
-              <PokemonCard key={id} image={image} name={name} id={id} />
+            {pokemons?.map(({ image, name, id, type }: IPokemon) => (
+              <PokemonCard key={id} image={image} name={name} id={id} type={type} />
             ))}
           </div>
 
-          {!nameState && <Pagination handlePage={handlePage} />}
+          {!nameState && <Pagination handlePage={handlePage} currentPage={pageState} />}
         </div>
       )}
 
