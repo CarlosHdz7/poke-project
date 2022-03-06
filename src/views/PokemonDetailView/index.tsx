@@ -9,6 +9,7 @@ import { RootState } from '../../rootReducer';
 import { IBookmark } from '../../interfaces/IBookmark';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import utils from '../../utils/common';
+import Loader from '../../components/general/loader';
 
 const PokemonDetailView = () => {
   const { id } = useParams();
@@ -102,7 +103,7 @@ const PokemonDetailView = () => {
           </div>
         </div>
       )}
-      {loading && '...loading'}
+      {loading && <Loader />}
 
       {error && 'An error has ocurred ...'}
     </>

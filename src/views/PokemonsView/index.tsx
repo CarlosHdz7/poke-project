@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useSearchParams } from 'react-router-dom';
+import Loader from '../../components/general/loader';
 import Pagination from '../../components/general/Pagination';
 import PokemonCard from '../../components/general/PokemonCard';
 import useFetchPokemons from '../../hooks/useFetchPokemons';
@@ -59,7 +60,7 @@ const PokemonsView = () => {
 
       {!pokemons?.length && !loading && 'No results'}
 
-      {loading && '...loading'}
+      {loading && <Loader />}
 
       {error && 'An error has ocurred ...'}
     </>
