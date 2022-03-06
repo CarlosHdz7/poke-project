@@ -1,0 +1,44 @@
+@import '../../styles/settings.scss';
+
+.bookmarks-container {
+  width: 100%;
+}
+
+.bookmark {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #fff;
+  min-height: 30px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.bookmarl-inner-container-1 {
+  display: flex;
+  align-items: center;
+}
+
+.bookmarl-inner-container__img {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+
+.bookmarl-inner-container__title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+
+.bi-trash3-fill {
+  font-size: 30px;
+  background-color: $clouds;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 20px;
+}

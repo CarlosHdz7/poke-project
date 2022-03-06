@@ -19,8 +19,6 @@ const PokemonDetailView = () => {
   const [, setBookmarksState] = useLocalStorage<IBookmark[]>('bookmarks', []);
   const bookmarks: IBookmark[] = useSelector((state: RootState) => state.bookmarks);
 
-  console.log(utils.isBookmarked(bookmarks, pokemon?.id));
-
   useEffect(() => {
     setBookmarksState(bookmarks);
   }, [bookmarks]);
