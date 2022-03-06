@@ -4,10 +4,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useFetchPokemon from '../../hooks/useFetchPokemon';
 import IPokemon from '../../interfaces/IPokemon';
 import './index.scss';
-import { addBookmark } from '../../store/bookmarks/bookmarks.action';
+import { addBookmark, removeBookmark } from '../../store/bookmarks/bookmarks.action';
 import { RootState } from '../../rootReducer';
 import { IBookmark } from '../../interfaces/IBookmark';
 import useLocalStorage from '../../hooks/useLocalStorage';
+import utils from '../../utils/common';
 
 const PokemonDetailView = () => {
   const { id } = useParams();
@@ -16,6 +17,8 @@ const PokemonDetailView = () => {
   const { data: pokemon, loading, error } = useFetchPokemon(id || '');
   const [, setBookmarksState] = useLocalStorage<IBookmark[]>('bookmarks', []);
   const bookmarks: IBookmark[] = useSelector((state: RootState) => state.bookmarks);
+
+  console.log(utils.isBookmarked(bookmarks, pokemon?.id));
 
   useEffect(() => {
     setBookmarksState(bookmarks);
@@ -28,7 +31,16 @@ const PokemonDetailView = () => {
   const handleAddBookmark = (pokemonInfo: IPokemon) => {
     dispatch(
       addBookmark({
-        uid: '1',
+        uid: pokemonInfo.id,
+        pokemon: pokemonInfo,
+      }),
+    );
+  };
+
+  const handleRemoveBookmark = (pokemonInfo: IPokemon) => {
+    dispatch(
+      removeBookmark({
+        uid: pokemonInfo.id,
         pokemon: pokemonInfo,
       }),
     );
@@ -40,7 +52,15 @@ const PokemonDetailView = () => {
         <div className="detail-container">
           <div className="detail-container-options">
             <i className="bi bi-arrow-left-circle-fill" onClick={backToList} aria-hidden="true" />
-            <i className="bi bi-heart-fill" onClick={() => handleAddBookmark(pokemon)} aria-hidden="true" />
+            {utils.isBookmarked(bookmarks, pokemon.id) ? (
+              <i
+                className="bi bi-heart-fill like-icon-2"
+                onClick={() => handleRemoveBookmark(pokemon)}
+                aria-hidden="true"
+              />
+            ) : (
+              <i className="bi bi-heart" onClick={() => handleAddBookmark(pokemon)} aria-hidden="true" />
+            )}
           </div>
           <h1 className="detail-container-title">{pokemon?.name}</h1>
           <div className="inner-detail-container">

@@ -1,6 +1,6 @@
 import IPokemon from './IPokemon';
 
 export interface IBookmark {
-  uid: string;
+  uid: number;
   pokemon: IPokemon;
 }

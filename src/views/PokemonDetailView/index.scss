@@ -30,10 +30,16 @@
   justify-content: space-between;
 
   .bi-arrow-left-circle-fill,
-  .bi-heart-fill {
+  .bi-heart {
     color: $white;
     font-size: 40px;
     cursor: pointer;
+  }
+
+  .like-icon-2 {
+    font-size: 40px;
+    cursor: pointer;
+    color: $alizarin;
   }
 }
 

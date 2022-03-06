@@ -1,6 +1,7 @@
 @import '../../../styles/settings.scss';
 
 .card {
+  position: relative;
   background-color: #fff;
   border-radius: $radius-container;
   padding: 20px;
@@ -16,6 +17,9 @@
   margin-top: 20px;
   width: 120px;
   height: 120px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .card .img-container img {
@@ -104,4 +108,12 @@
 .ghost {
   background-color: $full-town;
   color: $white;
+}
+
+.like-icon {
+  position: absolute;
+  color: $pomegranate;
+  top: 15px;
+  right: 15px;
+  font-size: 30px;
 }
