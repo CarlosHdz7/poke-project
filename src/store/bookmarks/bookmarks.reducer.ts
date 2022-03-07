@@ -1,4 +1,4 @@
-import { IBookmark } from '../../interfaces/IBookmark';
+import { IBookmark } from 'interfaces/IBookmark';
 
 const initialState: IBookmark[] = [];
 

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import IPokemon from "../interfaces/IPokemon";
-import { getPokemonById } from '../services/pokemons.service';
+import IPokemon from 'interfaces/IPokemon';
+import { getPokemonById } from 'services/pokemons.service';
 
 const useFetchPokemon = (id: string) => {
   const isMounted = useRef(true);
@@ -12,8 +12,8 @@ const useFetchPokemon = (id: string) => {
     getPokemon();
     return () => {
       isMounted.current = false;
-    }
-  }, [id])
+    };
+  }, [id]);
 
   const getPokemon = async () => {
     setLoading(true);
@@ -26,9 +26,8 @@ const useFetchPokemon = (id: string) => {
     }
     setLoading(false);
   };
-  
 
   return { loading, data, error };
-}
+};
 
 export default useFetchPokemon;

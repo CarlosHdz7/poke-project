@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
-import Loader from '../../components/general/loader';
-import Pagination from '../../components/general/Pagination';
-import PokemonCard from '../../components/general/PokemonCard';
-import useFetchPokemons from '../../hooks/useFetchPokemons';
-import IPokemon from '../../interfaces/IPokemon';
-import { RootState } from '../../rootReducer';
+import Loader from 'components/general/loader';
+import Pagination from 'components/general/Pagination';
+import PokemonCard from 'components/general/PokemonCard';
+import useFetchPokemons from 'hooks/useFetchPokemons';
+import IPokemon from 'interfaces/IPokemon';
+import { RootState } from 'rootReducer';
 
 import './index.scss';
 

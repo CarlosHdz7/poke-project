@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { IBookmark } from '../../interfaces/IBookmark';
+import { IBookmark } from 'interfaces/IBookmark';
 
 const addBookmark = (data: IBookmark) => (dispatch: (action: { type: string; payload: IBookmark }) => void) => {
   dispatch({

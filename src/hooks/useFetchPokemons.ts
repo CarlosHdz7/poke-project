@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import { IFilter } from '../interfaces/IFilter';
-import IPokemon from '../interfaces/IPokemon';
-import { getAllPokemons } from '../services/pokemons.service';
+
+import { IFilter } from 'interfaces/IFilter';
+import IPokemon from 'interfaces/IPokemon';
+import { getAllPokemons } from 'services/pokemons.service';
 
 const useFetchPokemons = (filter: IFilter) => {
   const isMounted = useRef(true);

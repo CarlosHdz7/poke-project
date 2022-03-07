@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { IUsePagination } from '../interfaces/IPagination';
+
+import { IUsePagination } from 'interfaces/IPagination';
 
 const usePagination = (initialConfig: IUsePagination) => {
   const [paginationConfigState, setPaginationConfigState] = useState(initialConfig);
@@ -20,7 +21,7 @@ const usePagination = (initialConfig: IUsePagination) => {
   };
 
   const setCurrentElements = () => {
-    const currentPageElements = (allElements) ? allElements.slice(offset, offset + elementsPerPage) : [];
+    const currentPageElements = allElements ? allElements.slice(offset, offset + elementsPerPage) : [];
     setPaginationConfigState((state: IUsePagination) => ({ ...state, currentPageElements }));
   };
 

@@ -1,4 +1,4 @@
-import { IBookmark } from '../interfaces/IBookmark';
+import { IBookmark } from 'interfaces/IBookmark';
 
 const setCapitalLetter = (text: string) => text[0].toUpperCase() + text.slice(1);
 

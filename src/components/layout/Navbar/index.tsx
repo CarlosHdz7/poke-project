@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+
+import pokeball from 'assets/pokeball.png';
+
 import './index.scss';
-import pokeball from '../../../assets/pokeball.png';
 
 const Navbar = () => {
   const activeClassName = 'active';

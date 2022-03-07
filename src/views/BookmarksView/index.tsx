@@ -1,11 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { IBookmark } from '../../interfaces/IBookmark';
-import IPokemon from '../../interfaces/IPokemon';
-import { RootState } from '../../rootReducer';
-import { removeBookmark } from '../../store/bookmarks/bookmarks.action';
-import utils from '../../utils/common';
+import { IBookmark } from 'interfaces/IBookmark';
+import IPokemon from 'interfaces/IPokemon';
+import { RootState } from 'rootReducer';
+import { removeBookmark } from 'store/bookmarks/bookmarks.action';
+import utils from 'utils/common';
 
 import './index.scss';
 

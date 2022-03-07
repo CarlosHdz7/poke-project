@@ -50,4 +50,15 @@ module.exports = {
     'no-use-before-define': ['error', { functions: false, classes: false, variables: false }],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
   },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+    'import/resolver': {
+      node: {
+        paths: ['src'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
 };

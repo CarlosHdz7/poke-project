@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import Navbar from '../../components/layout/Navbar';
-import AboutView from '../AboutView';
-import BookmarksView from '../BookmarksView';
-import PokemonDetailView from '../PokemonDetailView';
-import PokemonsView from '../PokemonsView';
+import Navbar from 'components/layout/Navbar';
+import AboutView from 'views/AboutView';
+import BookmarksView from 'views/BookmarksView';
+import PokemonDetailView from 'views/PokemonDetailView';
+import PokemonsView from 'views/PokemonsView';
 
 const AppRouter = () => (
   <>

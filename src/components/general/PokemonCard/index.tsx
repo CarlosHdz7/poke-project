@@ -1,11 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './index.scss';
 import { useNavigate } from 'react-router-dom';
-import utils from '../../../utils/common';
-import IPokemon from '../../../interfaces/IPokemon';
-import { IBookmark } from '../../../interfaces/IBookmark';
-import { RootState } from '../../../rootReducer';
+
+import utils from 'utils/common';
+import IPokemon from 'interfaces/IPokemon';
+import { IBookmark } from 'interfaces/IBookmark';
+import { RootState } from 'rootReducer';
+
+import './index.scss';
 
 const PokemonCard = (props: IPokemon) => {
   const navigate = useNavigate();
