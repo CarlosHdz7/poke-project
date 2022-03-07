@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+
 import useFetchPokemon from '../../hooks/useFetchPokemon';
-import IPokemon from '../../interfaces/IPokemon';
-import './index.scss';
-import { addBookmark, removeBookmark } from '../../store/bookmarks/bookmarks.action';
-import { RootState } from '../../rootReducer';
-import { IBookmark } from '../../interfaces/IBookmark';
 import useLocalStorage from '../../hooks/useLocalStorage';
+import IPokemon from '../../interfaces/IPokemon';
+import { IBookmark } from '../../interfaces/IBookmark';
+import { RootState } from '../../rootReducer';
+import { addBookmark, removeBookmark } from '../../store/bookmarks/bookmarks.action';
 import utils from '../../utils/common';
 import Loader from '../../components/general/loader';
+
+import './index.scss';
 
 const PokemonDetailView = () => {
   const { id } = useParams();

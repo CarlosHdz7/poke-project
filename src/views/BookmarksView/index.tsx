@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { IBookmark } from '../../interfaces/IBookmark';
 import IPokemon from '../../interfaces/IPokemon';
 import { RootState } from '../../rootReducer';
