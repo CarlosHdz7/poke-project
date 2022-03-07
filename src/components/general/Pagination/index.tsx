@@ -12,6 +12,7 @@ const Pagination = (props: any) => {
           className={`pagination__button ${currentPage === page.toString() ? 'pagination__button--active' : ''} `}
           type="button"
           onClick={() => handlePage(page.toString())}
+          key={page}
         >
           {page}
         </button>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
 import Loader from 'components/general/loader';
@@ -7,7 +6,6 @@ import Pagination from 'components/general/Pagination';
 import PokemonCard from 'components/general/PokemonCard';
 import useFetchPokemons from 'hooks/useFetchPokemons';
 import IPokemon from 'interfaces/IPokemon';
-import { RootState } from 'rootReducer';
 
 import './index.scss';
 
@@ -16,8 +14,6 @@ const PokemonsView = () => {
   const [nameState, setNameState] = useState(search.get('name')?.trim() || '');
   const [pageState, setPageState] = useState(search.get('page')?.trim() || '1');
   const { data: pokemons, loading, error } = useFetchPokemons({ name: nameState, page: pageState });
-  const bookmarks: any = useSelector((state: RootState) => state.bookmarks);
-  console.log(bookmarks);
 
   const handleSearch = (value: string) => {
     const pokemonName = value.trim();

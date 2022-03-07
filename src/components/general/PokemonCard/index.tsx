@@ -26,8 +26,10 @@ const PokemonCard = (props: IPokemon) => {
       </div>
       <p className="card-title">{utils.setCapitalLetter(name)}</p>
       <p>
-        {type?.map((t) => (
-          <span className={`badged ${t}`}>{t}</span>
+        {type?.map((typeColor) => (
+          <span className={`badged ${typeColor}`} key={typeColor}>
+            {typeColor}
+          </span>
         ))}
       </p>
     </div>
