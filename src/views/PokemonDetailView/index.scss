@@ -1,11 +1,8 @@
 @import 'styles/settings.scss';
 
-// * {
-//   border: 1px solid red;
-// }
-
 .detail-container {
   margin-top: 30px;
+  margin-bottom: 40px;
   padding-top: 40px;
   width: 100%;
   background: $white;
@@ -50,6 +47,7 @@
   background-color: $white;
   padding: 20px;
   padding-top: 120px;
+  padding-bottom: 120px;
   position: relative;
   display: block;
   box-sizing: border-box;
@@ -67,8 +65,31 @@
   text-align: center;
 }
 
+.types {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
 .stats {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.types .badged {
+  font-size: 20px;
+}
+
+.stats__table {
+  td {
+    padding: 10px;
+  }
+}
+.bar-column {
+  width: 300px;
+}
+
+.base-column {
+  font-weight: 700;
 }

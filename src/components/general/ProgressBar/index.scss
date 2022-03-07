@@ -1,0 +1,31 @@
+@import 'styles/settings.scss';
+
+.bar-container {
+  background-color: $clouds;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.bar-container__bar {
+  background-color: $emerald;
+}
+
+.bar-container__bar--Attack {
+  background-color: $pomegranate;
+}
+
+.bar-container__bar--Defense {
+  background-color: $peter-river;
+}
+
+.bar-container__bar--Special-Attack {
+  background-color: $sun-flower;
+}
+
+.bar-container__bar--Special-Defense {
+  background-color: $turcoise;
+}
+
+.bar-container__bar--Speed {
+  background-color: $wet-asphalt;
+}

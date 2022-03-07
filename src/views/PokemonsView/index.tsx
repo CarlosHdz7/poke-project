@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import Loader from 'components/general/loader';
+import Loader from 'components/general/Loader';
 import Pagination from 'components/general/Pagination';
 import PokemonCard from 'components/general/PokemonCard';
 import useFetchPokemons from 'hooks/useFetchPokemons';

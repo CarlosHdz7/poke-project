@@ -9,9 +9,10 @@ import { IBookmark } from 'interfaces/IBookmark';
 import { RootState } from 'rootReducer';
 import { addBookmark, removeBookmark } from 'store/bookmarks/bookmarks.action';
 import utils from 'utils/common';
-import Loader from 'components/general/loader';
+import Loader from 'components/general/Loader';
 
 import './index.scss';
+import ProgressBar from 'components/general/ProgressBar';
 
 const PokemonDetailView = () => {
   const { id } = useParams();
@@ -66,38 +67,20 @@ const PokemonDetailView = () => {
           <h1 className="detail-container-title">{pokemon?.name}</h1>
           <div className="inner-detail-container">
             <img src={pokemon?.image} alt="" className="inner-detail-image" />
+            <div className="types">
+              {pokemon?.type?.map((typeColor) => (
+                <span className={`badged ${typeColor}`} key={typeColor}>
+                  {typeColor}
+                </span>
+              ))}
+            </div>
             <div className="stats">
               <table className="stats__table">
-                <tr>
-                  <td>Hp</td>
-                  <td>46</td>
-                  <td>barra</td>
-                </tr>
-                <tr>
-                  <td>Attack</td>
-                  <td>46</td>
-                  <td>barra</td>
-                </tr>
-                <tr>
-                  <td>Defense</td>
-                  <td>46</td>
-                  <td>barra</td>
-                </tr>
-                <tr>
-                  <td>Sp. Atk</td>
-                  <td>46</td>
-                  <td>barra</td>
-                </tr>
-                <tr>
-                  <td>Sp. Def</td>
-                  <td>46</td>
-                  <td>barra</td>
-                </tr>
-                <tr>
-                  <td>Speed</td>
-                  <td>46</td>
-                  <td>barra</td>
-                </tr>
+                <tbody>
+                  {pokemon?.stats?.map((stat) => (
+                    <ProgressBar base={stat.base} name={stat.name} key={stat.name} />
+                  ))}
+                </tbody>
               </table>
             </div>
           </div>
