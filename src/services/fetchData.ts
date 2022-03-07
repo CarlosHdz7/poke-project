@@ -1,8 +1,6 @@
-const API_URL = 'https://poke-api-hdz.herokuapp.com';
-
 /* eslint no-undef: 0 */
 const http = async <P>(path: string, config: RequestInit): Promise<P> => {
-  const request = new Request(API_URL + path, config);
+  const request = new Request(process.env.REACT_APP_BASE_URL + path, config);
   const response = await fetch(request);
   if (!response.ok) {
     throw new Error('Could not load info');
