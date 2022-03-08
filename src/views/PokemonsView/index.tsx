@@ -55,11 +55,11 @@ const PokemonsView = () => {
         </div>
       )}
 
-      {!pokemons?.length && !loading && 'No results'}
+      {!pokemons?.length && !loading && <p className="message">No results X_X</p>}
 
       {loading && <Loader />}
 
-      {error && 'An error has ocurred ...'}
+      {error && <p className="message">An error has ocurred ...</p>}
     </>
   );
 };
