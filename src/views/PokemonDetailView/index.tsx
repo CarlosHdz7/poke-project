@@ -88,7 +88,7 @@ const PokemonDetailView = () => {
       )}
       {loading && <Loader />}
 
-      {error && navigate(`/404`)}
+      {error === 404 && navigate(`/404`)}
     </>
   );
 };
