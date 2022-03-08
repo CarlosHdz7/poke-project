@@ -49,7 +49,7 @@ const BookmarksView = () => {
           </div>
         ))}
 
-        {!bookmarks.length && 'No results'}
+        {!bookmarks.length && <p className="message">No results X_X</p>}
       </div>
     </>
   );
