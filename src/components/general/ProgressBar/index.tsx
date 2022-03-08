@@ -12,11 +12,8 @@ const ProgressBar = (props: IStats) => {
       <td>{name}</td>
       <td className="base-column">{base}</td>
       <td className="bar-column">
-        <div className="bar-container">
-          <div
-            className={`bar-container__bar bar-container__bar--${name}`}
-            style={{ height: '24px', width: `${percentage}%` }}
-          />
+        <div className="bar-container shadow">
+          <div className={`bar-container__bar bar-container__bar--${name}`} style={{ width: `${percentage}%` }} />
         </div>
       </td>
     </tr>

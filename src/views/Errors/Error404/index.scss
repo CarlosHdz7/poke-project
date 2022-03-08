@@ -15,7 +15,7 @@
 .error-subtitle {
   margin-top: 0px;
   margin-bottom: 30px;
-  font-weight: 700;
+  font-weight: $font-bold;
   color: $wet-asphalt;
 }
 
@@ -24,7 +24,7 @@
   font-size: 16px;
   color: $white;
   border: none;
-  border-radius: 8px;
+  border-radius: $radius-element;
   background-color: $wisteria;
   cursor: pointer;
 }

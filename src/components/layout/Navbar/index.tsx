@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar">
+      <div className="navbar shadow">
         <button type="button" className="side-button" onClick={showSideBar}>
           <i className="bi bi-list" />
         </button>

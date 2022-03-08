@@ -9,7 +9,9 @@ const Pagination = (props: any) => {
     <div className="pagination">
       {pages.map((page) => (
         <button
-          className={`pagination__button ${currentPage === page.toString() ? 'pagination__button--active' : ''} `}
+          className={`pagination__button shadow ${
+            currentPage === page.toString() ? 'pagination__button--active' : ''
+          } `}
           type="button"
           onClick={() => handlePage(page.toString())}
           key={page}

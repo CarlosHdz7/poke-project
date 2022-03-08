@@ -8,6 +8,7 @@ import { IBookmark } from 'interfaces/IBookmark';
 import { RootState } from 'rootReducer';
 
 import './index.scss';
+import appRoutes from 'routes';
 
 const PokemonCard = (props: IPokemon) => {
   const navigate = useNavigate();
@@ -15,11 +16,11 @@ const PokemonCard = (props: IPokemon) => {
   const bookmarks: IBookmark[] = useSelector((state: RootState) => state.bookmarks);
 
   const goToPokemonView = (pokemonId: number) => {
-    navigate(`/pokemons/${pokemonId}`);
+    navigate(`/${appRoutes.POKEMONS}/${pokemonId}`);
   };
 
   return (
-    <div className="card" onClick={() => goToPokemonView(id)} aria-hidden="true">
+    <div className="card shadow" onClick={() => goToPokemonView(id)} aria-hidden="true">
       {utils.isBookmarked(bookmarks, id) && <i className="bi bi-heart-fill like-icon" />}
       <div className="img-container">
         <img src={image} alt="" />

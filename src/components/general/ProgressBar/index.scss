@@ -2,12 +2,13 @@
 
 .bar-container {
   background-color: $clouds;
-  border-radius: 8px;
+  border-radius: $radius-element;
   overflow: hidden;
 }
 
 .bar-container__bar {
   background-color: $emerald;
+  height: 24px;
 }
 
 .bar-container__bar--Attack {

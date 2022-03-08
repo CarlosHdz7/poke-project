@@ -1,3 +1,5 @@
+@import 'styles/settings.scss';
+
 .cards-container {
   display: flex;
   flex-wrap: wrap;
@@ -28,9 +30,8 @@
   border: none;
   padding: 10px;
   padding-left: 40px;
-  border-radius: 8px;
+  border-radius: $radius-element;
   font-size: 20px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
 .main-container {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import appRoutes from 'routes';
 
 import './index.scss';
 
@@ -7,7 +8,7 @@ const Error404 = () => {
   const navigate = useNavigate();
 
   const goToList = () => {
-    navigate('/pokemons');
+    navigate(appRoutes.HOME);
   };
   return (
     <div className="error-container">

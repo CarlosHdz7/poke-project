@@ -28,3 +28,85 @@ code {
   font-size: 20px;
   color: $wet-asphalt;
 }
+
+.shadow {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.grass {
+  background-color: $emerald;
+  color: $white;
+}
+
+.poison {
+  background-color: $wisteria;
+  color: $white;
+}
+
+.fire {
+  background-color: $alizarin;
+  color: $white;
+}
+
+.water {
+  background-color: $peter-river;
+  color: $white;
+}
+
+.bug {
+  background-color: $turcoise;
+  color: $white;
+}
+
+.flying {
+  background-color: $belize;
+  color: $white;
+}
+
+.electric {
+  background-color: $sun-flower;
+  color: $white;
+}
+
+.ground {
+  background-color: $pumpkin;
+  color: $white;
+}
+
+.fairy {
+  background-color: $jigglypuff;
+  color: $white;
+}
+
+.fighting {
+  background-color: $midnight-blue;
+  color: $white;
+}
+
+.psychic {
+  background-color: $orange;
+  color: $white;
+}
+
+.rock {
+  background-color: $wet-asphalt;
+  color: $white;
+}
+
+.ice {
+  background-color: $cyanite;
+  color: $white;
+}
+
+.ghost {
+  background-color: $full-town;
+  color: $white;
+}
+
+.like-icon {
+  position: absolute;
+  color: $pomegranate;
+  top: 15px;
+  right: 15px;
+  font-size: 30px;
+}

@@ -27,7 +27,7 @@ const BookmarksView = () => {
       <h1 className="title">Bookmarks</h1>
       <div className="bookmarks-container">
         {bookmarks.map((bookmark) => (
-          <div className="bookmark">
+          <div className="bookmark shadow">
             <div className="bookmarl-inner-container-1">
               <img src={bookmark.pokemon.image} alt="" className="bookmarl-inner-container__img" />
               <div>

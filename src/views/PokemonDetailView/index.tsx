@@ -51,7 +51,7 @@ const PokemonDetailView = () => {
   return (
     <>
       {!loading && pokemon && !error && (
-        <div className="detail-container">
+        <div className="detail-container shadow">
           <div className="detail-container-options">
             <i className="bi bi-arrow-left-circle-fill" onClick={backToList} aria-hidden="true" />
             {utils.isBookmarked(bookmarks, pokemon.id) ? (

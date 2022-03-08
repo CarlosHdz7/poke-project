@@ -35,7 +35,7 @@ const PokemonsView = () => {
         <input
           value={nameState}
           type="text"
-          className="searchbar-container__input"
+          className="searchbar-container__input shadow"
           placeholder="Search ..."
           onChange={(e) => handleSearch(e.target.value)}
         />
