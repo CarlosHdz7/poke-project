@@ -64,7 +64,7 @@ const PokemonDetailView = () => {
               <i className="bi bi-heart" onClick={() => handleAddBookmark(pokemon)} aria-hidden="true" />
             )}
           </div>
-          <h1 className="detail-container-title">{pokemon?.name}</h1>
+          <h1 className="detail-container-title">{utils.setCapitalLetter(pokemon?.name)}</h1>
           <div className="inner-detail-container">
             <img src={pokemon?.image} alt="" className="inner-detail-image" />
             <div className="types">
