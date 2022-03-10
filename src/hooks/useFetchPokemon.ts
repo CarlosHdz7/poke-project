@@ -20,11 +20,14 @@ const useFetchPokemon = (id: string) => {
     isMounted.current = true;
     try {
       const pokemon = await getPokemonById(id);
-      setData(pokemon);
+      if (isMounted.current) {
+        setData(pokemon);
+        setLoading(false);
+      }
     } catch (e: any) {
       setError(e);
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return { loading, data, error };

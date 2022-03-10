@@ -20,7 +20,7 @@ const PokemonCard = (props: IPokemon) => {
   };
 
   return (
-    <div className="card shadow" onClick={() => goToPokemonView(id)} aria-hidden="true">
+    <button type="button" className="card shadow" onClick={() => goToPokemonView(id)} name={name}>
       {utils.isBookmarked(bookmarks, id) && <i className="bi bi-heart-fill like-icon" />}
       <div className="img-container">
         <img src={image} alt="" />
@@ -33,7 +33,7 @@ const PokemonCard = (props: IPokemon) => {
           </span>
         ))}
       </p>
-    </div>
+    </button>
   );
 };
 

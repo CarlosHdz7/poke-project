@@ -22,11 +22,14 @@ const useFetchPokemons = (filter: IFilter) => {
     isMounted.current = true;
     try {
       const pokemons = await getAllPokemons(filter);
-      setData(pokemons);
+      if (isMounted.current) {
+        setData(pokemons);
+        setLoading(false);
+      }
     } catch (e: any) {
       setError(e);
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return { loading, data, error };
