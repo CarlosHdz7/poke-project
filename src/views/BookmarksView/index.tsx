@@ -27,14 +27,16 @@ const BookmarksView = () => {
       <h1 className="title">Bookmarks</h1>
       <div className="bookmarks-container">
         {bookmarks.map((bookmark) => (
-          <div className="bookmark shadow">
+          <div className="bookmark shadow" key={bookmark.uid}>
             <div className="bookmarl-inner-container-1">
               <img src={bookmark.pokemon.image} alt="" className="bookmarl-inner-container__img" />
               <div>
                 <p className="bookmarl-inner-container__title">{utils.setCapitalLetter(bookmark.pokemon.name)}</p>
                 <p>
                   {bookmark.pokemon.type?.map((t) => (
-                    <span className={`badged ${t}`}>{t}</span>
+                    <span className={`badged ${t}`} key={t}>
+                      {t}
+                    </span>
                   ))}
                 </p>
               </div>
