@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, waitFor, screen, act } from '@testing-library/react';
 import * as reactRedux from 'react-redux';
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import store from 'store';
 import PokemonCard from '.';
 import { IBookmark } from 'interfaces/IBookmark';
@@ -105,5 +105,31 @@ describe('Testing Pokemon list view', () => {
 
     const icon = document.querySelector('.like-icon');
     expect(icon).not.toBeInTheDocument();
+  });
+
+  it('should redirect to pokemon detail x', async () => {
+    useSelectorMock.mockReturnValue(bookmarksMock);
+
+    render(
+      <reactRedux.Provider store={store}>
+        <BrowserRouter>
+          <PokemonCard
+            image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
+            name="Bulbasaur"
+            id={1}
+            type={['grass', 'poison']}
+          ></PokemonCard>
+        </BrowserRouter>
+      </reactRedux.Provider>,
+    );
+
+    const card = screen.getByRole('button', {
+      name: /bulbasaur/i,
+    });
+    fireEvent.click(card);
+
+    await screen.findByText(/bulbasaur/i);
+    screen.findByText(/Hp/i);
+    screen.findByText(/Attack/i);
   });
 });

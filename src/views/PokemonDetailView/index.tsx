@@ -23,6 +23,10 @@ const PokemonDetailView = () => {
   const bookmarks: IBookmark[] = useSelector((state: RootState) => state.bookmarks);
 
   useEffect(() => {
+    if (error === 404) navigate(`/404`);
+  }, [error]);
+
+  useEffect(() => {
     setBookmarksState(bookmarks);
   }, [bookmarks]);
 
@@ -64,7 +68,7 @@ const PokemonDetailView = () => {
               <i className="bi bi-heart" onClick={() => handleAddBookmark(pokemon)} aria-hidden="true" />
             )}
           </div>
-          <h1 className="detail-container-title">{utils.setCapitalLetter(pokemon?.name)}</h1>
+          <h1 className="detail-container-title">Name: {utils.setCapitalLetter(pokemon?.name)}</h1>
           <div className="inner-detail-container">
             <img src={pokemon?.image} alt="" className="inner-detail-image" />
             <div className="types">
@@ -87,8 +91,6 @@ const PokemonDetailView = () => {
         </div>
       )}
       {loading && <Loader />}
-
-      {error === 404 && navigate(`/404`)}
     </>
   );
 };

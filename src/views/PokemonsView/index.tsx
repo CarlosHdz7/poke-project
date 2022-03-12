@@ -29,7 +29,7 @@ const PokemonsView = () => {
 
   return (
     <>
-      <h1 className="title">Pokemons</h1>
+      <h1 className="title">Pokemons List</h1>
       <div className="searchbar-container">
         <i className="bi bi-search searchbar-container__icon" />
         <input

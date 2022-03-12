@@ -8,8 +8,9 @@ const Error404 = () => {
   const navigate = useNavigate();
 
   const goToList = () => {
-    navigate(appRoutes.HOME);
+    navigate(`/${appRoutes.POKEMONS}`);
   };
+
   return (
     <div className="error-container">
       <p className="error-title">404</p>

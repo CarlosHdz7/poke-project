@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing 404 page should render correctly 1`] = `
+<div
+  className="error-container"
+>
+  <p
+    className="error-title"
+  >
+    404
+  </p>
+  <p
+    className="error-subtitle"
+  >
+    Pokemon not found
+  </p>
+  <button
+    className="error-button"
+    onClick={[Function]}
+    type="button"
+  >
+    Go back to list
+  </button>
+</div>
+`;

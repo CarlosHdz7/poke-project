@@ -1,9 +1,13 @@
 import React from 'react';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { BrowserRouter, MemoryRouter, Route, Routes } from 'react-router-dom';
 import PokemonsView from '.';
 import store from 'store';
+import Error404 from 'views/Errors/Error404';
+import AppRouter from 'views/AppRouter';
+import PokemonDetailView from 'views/PokemonDetailView';
+import appRoutes from 'routes';
 describe('Testing Pokemon list view', () => {
   beforeEach(() => {
     jest.spyOn(console, 'warn').mockImplementation(() => {});
@@ -49,47 +53,72 @@ describe('Testing Pokemon list view', () => {
     await screen.findByText('Spearow');
   });
 
-  it('should shows a pokemon details', async () => {
+  it('should redirect a pokemon details', async () => {
     render(
       <Provider store={store}>
         <BrowserRouter>
           <PokemonsView />
+          <AppRouter />
         </BrowserRouter>
       </Provider>,
     );
 
-    await waitFor(() => {
-      const card = screen.getByRole('button', {
-        name: /pikachu/i,
-      });
-      fireEvent.click(card);
+    const card = await screen.findByRole('button', {
+      name: /Spearow/i,
     });
+    fireEvent.click(card);
 
-    screen.findByText(/Hp/i);
-    screen.findByText(/Attack/i);
+    expect(await screen.findByText('Spearow')).toBeInTheDocument();
+    expect(await screen.findByText('Attack')).toBeInTheDocument();
+    expect(await screen.findByText('Defense')).toBeInTheDocument();
   });
 
-  it('should redirect to pokemon details', async () => {
+  it('should shows to pokemon details', async () => {
     render(
       <Provider store={store}>
-        <MemoryRouter initialEntries={['Test page', '/pokemons/1']}>
-          <PokemonsView />
+        <MemoryRouter initialEntries={['/pokemons/1']}>
+          <PokemonDetailView />
+          <AppRouter />
         </MemoryRouter>
       </Provider>,
     );
-
-    screen.findByText(/Bulbasaur/i);
+    expect(await screen.findByText(/Name: Bulbasaur/i)).toBeInTheDocument();
+    expect(await screen.findByText('Attack')).toBeInTheDocument();
+    expect(await screen.findByText('Defense')).toBeInTheDocument();
   });
 
   it('should redirect to 404', async () => {
     render(
       <Provider store={store}>
-        <MemoryRouter initialEntries={['Test page', '/pokemons/error']}>
+        <MemoryRouter initialEntries={['/pokemons/error']}>
           <PokemonsView />
+          <AppRouter />
         </MemoryRouter>
       </Provider>,
     );
 
-    screen.findByText(/Pokemon not found/i);
+    // screen.findByText(/Pokemon not found/i);
+    expect(await screen.findByText('Pokemon not found')).toBeInTheDocument();
+  });
+
+  it('should go back to previous page (Pokemons List)', async () => {
+    render(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/pokemons', '/pokemons/1']}>
+          <PokemonDetailView />
+          <AppRouter />
+        </MemoryRouter>
+      </Provider>,
+    );
+    expect(await screen.findByText(/Name: Bulbasaur/i)).toBeInTheDocument();
+    expect(await screen.findByText('Attack')).toBeInTheDocument();
+    expect(await screen.findByText('Defense')).toBeInTheDocument();
+
+    const icon = document.querySelector('.bi-arrow-left-circle-fill');
+
+    if (icon) {
+      fireEvent.click(icon);
+      expect(await screen.findByText(/Pokemons List/i)).toBeInTheDocument();
+    }
   });
 });
