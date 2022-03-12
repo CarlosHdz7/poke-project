@@ -42,11 +42,11 @@ const BookmarksView = () => {
               </div>
             </div>
             <div className="bookmarl-inner-container-2">
-              <i
-                className="bi bi-trash3-fill"
-                onClick={() => handleRemoveBookmark(bookmark.pokemon)}
-                aria-hidden="true"
-              />
+              <button type='button'className='delete-button' onClick={() => handleRemoveBookmark(bookmark.pokemon)}>
+                <i
+                  className="bi bi-trash3-fill"
+                />
+              </button>
             </div>
           </div>
         ))}
