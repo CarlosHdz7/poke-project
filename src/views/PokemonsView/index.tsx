@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import _ from 'lodash';
 
 import Loader from 'components/general/Loader';
 import Pagination from 'components/general/Pagination';
@@ -14,12 +15,17 @@ const PokemonsView = () => {
   const [nameState, setNameState] = useState(search.get('name')?.trim() || '');
   const [pageState, setPageState] = useState(search.get('page')?.trim() || '1');
   const { data: pokemons, loading, error } = useFetchPokemons({ name: nameState, page: pageState });
+  const inputRef = useRef() as MutableRefObject<HTMLInputElement>;
 
-  const handleSearch = (value: string) => {
-    const pokemonName = value.trim();
+  useEffect(() => {
+    inputRef.current.value = nameState;
+  }, [nameState]);
+
+  const handleSearch = _.debounce(() => {
+    const pokemonName = inputRef.current.value.trim();
     setNameState(pokemonName);
     setSearch(pokemonName ? { name: pokemonName } : {});
-  };
+  }, 1000);
 
   const handlePage = (value: string) => {
     const pageNumber = value.trim();
@@ -33,11 +39,11 @@ const PokemonsView = () => {
       <div className="searchbar-container">
         <i className="bi bi-search searchbar-container__icon" />
         <input
-          value={nameState}
           type="text"
           className="searchbar-container__input"
           placeholder="Search ..."
-          onChange={(e) => handleSearch(e.target.value)}
+          ref={inputRef}
+          onChange={handleSearch}
         />
       </div>
 
