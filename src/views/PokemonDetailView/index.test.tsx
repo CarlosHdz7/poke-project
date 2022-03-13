@@ -1,8 +1,8 @@
 import React from 'react';
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import * as reactRedux from 'react-redux';
-import { BrowserRouter, MemoryRouter, Route, Routes } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import store from 'store';
 import AppRouter from 'views/AppRouter';
 import PokemonDetailView from 'views/PokemonDetailView';

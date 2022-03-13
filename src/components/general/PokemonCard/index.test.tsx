@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, waitFor, screen, act } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import * as reactRedux from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import store from 'store';

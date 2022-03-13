@@ -1,19 +1,10 @@
 import React from 'react';
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { BrowserRouter, MemoryRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import PokemonsView from '.';
 import store from 'store';
-import Error404 from 'views/Errors/Error404';
 import AppRouter from 'views/AppRouter';
-import PokemonDetailView from 'views/PokemonDetailView';
-import appRoutes from 'routes';
-
-type TestElement = Document | Element | Window | Node;
-
-function hasInputValue(e: TestElement, inputValue: string) {
-  return screen.getByDisplayValue(inputValue) === e;
-}
 
 describe('Testing Pokemon list view', () => {
   beforeEach(() => {
