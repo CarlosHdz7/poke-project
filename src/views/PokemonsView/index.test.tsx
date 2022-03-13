@@ -1,8 +1,9 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
+import PokemonsView from '.';
+import { renderWithMemoryRouter } from 'utils/wrapper';
 import { Provider } from 'react-redux';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
-import PokemonsView from '.';
 import store from 'store';
 import AppRouter from 'views/AppRouter';
 
@@ -29,12 +30,11 @@ describe('Testing Pokemon list view', () => {
   it('should shows pokemon of page 2', async () => {
     render(
       <Provider store={store}>
-        <MemoryRouter initialEntries={['/pokemons']}>
+        <BrowserRouter>
           <PokemonsView />
-        </MemoryRouter>
+        </BrowserRouter>
       </Provider>,
     );
-
     const buttons = await screen.findAllByText(/2/i);
 
     fireEvent.click(buttons[0]);
@@ -44,10 +44,10 @@ describe('Testing Pokemon list view', () => {
   it('should redirect a pokemon details', async () => {
     render(
       <Provider store={store}>
-        <BrowserRouter>
+        <MemoryRouter initialEntries={['/']}>
           <PokemonsView />
           <AppRouter />
-        </BrowserRouter>
+        </MemoryRouter>
       </Provider>,
     );
 
@@ -62,14 +62,8 @@ describe('Testing Pokemon list view', () => {
   });
 
   it('should search a pokemon', async () => {
-    render(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={['/']}>
-          <PokemonsView />
-          <AppRouter />
-        </MemoryRouter>
-      </Provider>,
-    );
+    renderWithMemoryRouter(<PokemonsView />, ['/'], true);
+
     const searchBar = await screen.findAllByPlaceholderText(/Search/i);
 
     fireEvent.change(searchBar[0], { target: { value: 'Pikachu' } });
@@ -82,14 +76,8 @@ describe('Testing Pokemon list view', () => {
   });
 
   it('should show no results', async () => {
-    render(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={['/']}>
-          <PokemonsView />
-          <AppRouter />
-        </MemoryRouter>
-      </Provider>,
-    );
+    renderWithMemoryRouter(<PokemonsView />, ['/'], true);
+
     const searchBar = await screen.findAllByPlaceholderText(/Search/i);
 
     fireEvent.change(searchBar[0], { target: { value: 'sfaasf' } });
