@@ -80,4 +80,20 @@ describe('Testing Pokemon list view', () => {
     await new Promise((r) => setTimeout(r, 1000));
     expect(await screen.findByText('Bulbasaur')).toBeInTheDocument();
   });
+
+  it('should show no results', async () => {
+    render(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/']}>
+          <PokemonsView />
+          <AppRouter />
+        </MemoryRouter>
+      </Provider>,
+    );
+    const searchBar = await screen.findAllByPlaceholderText(/Search/i);
+
+    fireEvent.change(searchBar[0], { target: { value: 'sfaasf' } });
+    await new Promise((r) => setTimeout(r, 1000));
+    expect(await screen.findByText(/No results/i)).toBeInTheDocument();
+  });
 });
