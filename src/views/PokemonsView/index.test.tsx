@@ -70,55 +70,6 @@ describe('Testing Pokemon list view', () => {
     expect(await screen.findByText('Defense')).toBeInTheDocument();
   });
 
-  it('should shows to pokemon details', async () => {
-    render(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={['/pokemons/1']}>
-          <PokemonDetailView />
-          <AppRouter />
-        </MemoryRouter>
-      </Provider>,
-    );
-    expect(await screen.findByText(/Name: Bulbasaur/i)).toBeInTheDocument();
-    expect(await screen.findByText('Attack')).toBeInTheDocument();
-    expect(await screen.findByText('Defense')).toBeInTheDocument();
-  });
-
-  it('should redirect to 404', async () => {
-    render(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={['/pokemons/error']}>
-          <PokemonsView />
-          <AppRouter />
-        </MemoryRouter>
-      </Provider>,
-    );
-
-    // screen.findByText(/Pokemon not found/i);
-    expect(await screen.findByText('Pokemon not found')).toBeInTheDocument();
-  });
-
-  it('should go back to previous page (Pokemons List)', async () => {
-    render(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={['/pokemons', '/pokemons/1']}>
-          <PokemonDetailView />
-          <AppRouter />
-        </MemoryRouter>
-      </Provider>,
-    );
-    expect(await screen.findByText(/Name: Bulbasaur/i)).toBeInTheDocument();
-    expect(await screen.findByText('Attack')).toBeInTheDocument();
-    expect(await screen.findByText('Defense')).toBeInTheDocument();
-
-    const icon = document.querySelector('.bi-arrow-left-circle-fill');
-
-    if (icon) {
-      fireEvent.click(icon);
-      expect(await screen.findByText(/Pokemons List/i)).toBeInTheDocument();
-    }
-  });
-
   it('should search a pokemon', async () => {
     render(
       <Provider store={store}>

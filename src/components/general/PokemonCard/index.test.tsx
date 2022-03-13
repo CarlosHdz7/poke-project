@@ -107,7 +107,7 @@ describe('Testing Pokemon list view', () => {
     expect(icon).not.toBeInTheDocument();
   });
 
-  it('should redirect to pokemon detail x', async () => {
+  it('should redirect to pokemon detail', async () => {
     useSelectorMock.mockReturnValue(bookmarksMock);
 
     render(
