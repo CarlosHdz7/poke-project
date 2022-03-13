@@ -36,6 +36,7 @@ const PokemonsView = () => {
   return (
     <>
       <h1 className="title">Pokemons List</h1>
+
       <div className="searchbar-container">
         <i className="bi bi-search searchbar-container__icon" />
         <input
@@ -44,9 +45,9 @@ const PokemonsView = () => {
           placeholder="Search ..."
           ref={inputRef}
           onChange={handleSearch}
+          disabled={loading}
         />
       </div>
-
       {!loading && !error && (
         <div className="main-container">
           {!nameState && <Pagination handlePage={handlePage} currentPage={pageState} />}

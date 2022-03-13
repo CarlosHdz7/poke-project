@@ -8,9 +8,17 @@ import Error404 from 'views/Errors/Error404';
 import AppRouter from 'views/AppRouter';
 import PokemonDetailView from 'views/PokemonDetailView';
 import appRoutes from 'routes';
+
+type TestElement = Document | Element | Window | Node;
+
+function hasInputValue(e: TestElement, inputValue: string) {
+  return screen.getByDisplayValue(inputValue) === e;
+}
+
 describe('Testing Pokemon list view', () => {
   beforeEach(() => {
     jest.spyOn(console, 'warn').mockImplementation(() => {});
+    jest.spyOn(console, 'error').mockImplementation(() => {});
   });
 
   it('should renders a list of pokemons initially', async () => {
@@ -27,23 +35,12 @@ describe('Testing Pokemon list view', () => {
     await screen.findByText('Raticate');
   });
 
-  it('should renders a search bar', async () => {
-    render(
-      <Provider store={store}>
-        <BrowserRouter>
-          <PokemonsView />
-        </BrowserRouter>
-      </Provider>,
-    );
-    await screen.getByPlaceholderText(/Search/i);
-  });
-
   it('should shows pokemon of page 2', async () => {
     render(
       <Provider store={store}>
-        <BrowserRouter>
+        <MemoryRouter initialEntries={['/pokemons']}>
           <PokemonsView />
-        </BrowserRouter>
+        </MemoryRouter>
       </Provider>,
     );
 
@@ -64,11 +61,11 @@ describe('Testing Pokemon list view', () => {
     );
 
     const card = await screen.findByRole('button', {
-      name: /Spearow/i,
+      name: /Bulbasaur/i,
     });
     fireEvent.click(card);
 
-    expect(await screen.findByText('Spearow')).toBeInTheDocument();
+    expect(await screen.findByText('Bulbasaur')).toBeInTheDocument();
     expect(await screen.findByText('Attack')).toBeInTheDocument();
     expect(await screen.findByText('Defense')).toBeInTheDocument();
   });
@@ -120,5 +117,25 @@ describe('Testing Pokemon list view', () => {
       fireEvent.click(icon);
       expect(await screen.findByText(/Pokemons List/i)).toBeInTheDocument();
     }
+  });
+
+  it('should search a pokemon', async () => {
+    render(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/']}>
+          <PokemonsView />
+          <AppRouter />
+        </MemoryRouter>
+      </Provider>,
+    );
+    const searchBar = await screen.findAllByPlaceholderText(/Search/i);
+
+    fireEvent.change(searchBar[0], { target: { value: 'Pikachu' } });
+    await new Promise((r) => setTimeout(r, 1000));
+    expect(await screen.findByText('Pikachu')).toBeInTheDocument();
+
+    fireEvent.change(searchBar[0], { target: { value: '' } });
+    await new Promise((r) => setTimeout(r, 1000));
+    expect(await screen.findByText('Bulbasaur')).toBeInTheDocument();
   });
 });
