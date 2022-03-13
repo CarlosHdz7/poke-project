@@ -22,9 +22,9 @@ describe('Testing Pokemon list view', () => {
       </Provider>,
     );
     await screen.findByText('Bulbasaur');
-    await screen.findByText('Ivysaur');
-    await screen.findByText('Charmander');
-    await screen.findByText('Raticate');
+    screen.getByText('Ivysaur');
+    screen.getByText('Charmander');
+    screen.getByText('Raticate');
   });
 
   it('should shows pokemon of page 2', async () => {
@@ -56,9 +56,9 @@ describe('Testing Pokemon list view', () => {
     });
     fireEvent.click(card);
 
-    expect(await screen.findByText('Bulbasaur')).toBeInTheDocument();
-    expect(await screen.findByText('Attack')).toBeInTheDocument();
-    expect(await screen.findByText('Defense')).toBeInTheDocument();
+    expect(await screen.findByText(/Name: Bulbasaur/i)).toBeInTheDocument();
+    expect(screen.getByText('Attack')).toBeInTheDocument();
+    expect(screen.getByText('Defense')).toBeInTheDocument();
   });
 
   it('should search a pokemon', async () => {

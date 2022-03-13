@@ -9,8 +9,11 @@ import PokemonDetailView from 'views/PokemonDetailView';
 import bookmarksMock from 'mocks/bookmarksMock';
 
 describe('Testing Pokemon Detail view', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   const useSelectorMock = jest.spyOn(reactRedux, 'useSelector');
-  beforeEach(() => useSelectorMock.mockClear());
 
   it('should shows to pokemon details', async () => {
     useSelectorMock.mockReturnValue(bookmarksMock);
@@ -25,8 +28,10 @@ describe('Testing Pokemon Detail view', () => {
     );
 
     expect(await screen.findByText(/Name: Bulbasaur/i)).toBeInTheDocument();
-    expect(await screen.findByText('Attack')).toBeInTheDocument();
-    expect(await screen.findByText('Defense')).toBeInTheDocument();
+    expect(screen.getByText('Attack')).toBeInTheDocument();
+    expect(screen.getByText('Defense')).toBeInTheDocument();
+    const icon = document.querySelector('.like-icon-2');
+    expect(icon).toBeInTheDocument();
   });
 
   it('should go back to previous page (Pokemons List)', async () => {
@@ -41,8 +46,8 @@ describe('Testing Pokemon Detail view', () => {
       </Provider>,
     );
     expect(await screen.findByText(/Name: Bulbasaur/i)).toBeInTheDocument();
-    expect(await screen.findByText('Attack')).toBeInTheDocument();
-    expect(await screen.findByText('Defense')).toBeInTheDocument();
+    expect(screen.getByText('Attack')).toBeInTheDocument();
+    expect(screen.getByText('Defense')).toBeInTheDocument();
 
     const icon = document.querySelector('.bi-arrow-left-circle-fill');
 

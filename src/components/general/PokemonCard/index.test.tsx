@@ -7,9 +7,11 @@ import PokemonCard from '.';
 import bookmarksMock from 'mocks/bookmarksMock';
 
 describe('Testing Pokemon list view', () => {
-  const useSelectorMock = jest.spyOn(reactRedux, 'useSelector');
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
-  beforeEach(() => useSelectorMock.mockClear());
+  const useSelectorMock = jest.spyOn(reactRedux, 'useSelector');
 
   it('should render a card with the basic information of a pokemon', async () => {
     useSelectorMock.mockReturnValue(bookmarksMock);
