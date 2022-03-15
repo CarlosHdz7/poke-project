@@ -1,0 +1,1616 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Pokemon list view should redirect to pokemon details 1`] = `
+<div>
+  <div
+    class="navbar shadow"
+  >
+    <button
+      class="side-button"
+      type="button"
+    >
+      <i
+        class="bi bi-list"
+      />
+    </button>
+    <div
+      class="navbar-container-options"
+    >
+      <a
+        class="navbar-container-item navbar-container-item__logo"
+        href="/"
+      >
+        <img
+          alt=""
+          class="navbar-image"
+          src="pokeball.png"
+        />
+        PokeApi
+      </a>
+      <div>
+        <a
+          class="navbar-container-item"
+          href="/bookmarks"
+        >
+          Bookmarks
+        </a>
+        <a
+          class="navbar-container-item"
+          href="/about"
+        >
+          About
+        </a>
+      </div>
+    </div>
+  </div>
+  <nav
+    class="side-menu-container"
+  >
+    <ul
+      class="side-menu-items"
+    >
+      <button
+        class="side-menu__item--button side-button-close"
+        type="button"
+      >
+        <i
+          class="bi bi-x-lg"
+        />
+      </button>
+      <li
+        class="side-menu__item side-bar-text"
+      >
+        Side Bar Options
+      </li>
+      <li
+        class="side-menu__item"
+      >
+        <a
+          class=""
+          href="/"
+        >
+          <span>
+            PokeApi
+          </span>
+        </a>
+      </li>
+      <li
+        class="side-menu__item"
+      >
+        <a
+          class=""
+          href="/bookmarks"
+        >
+          <span>
+            Bookmarks
+          </span>
+        </a>
+      </li>
+      <li
+        class="side-menu__item"
+      >
+        <a
+          class=""
+          href="/about"
+        >
+          <span>
+            About
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div
+    class="container"
+  >
+    <div
+      class="detail-container shadow"
+    >
+      <div
+        class="detail-container-options"
+      >
+        <i
+          aria-hidden="true"
+          class="bi bi-arrow-left-circle-fill"
+        />
+        <i
+          aria-hidden="true"
+          class="bi bi-heart"
+        />
+      </div>
+      <h1
+        class="detail-container-title"
+      >
+        Name: 
+        Bulbasaur
+      </h1>
+      <div
+        class="inner-detail-container"
+      >
+        <img
+          alt=""
+          class="inner-detail-image"
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+        />
+        <div
+          class="types"
+        >
+          <span
+            class="badged grass"
+          >
+            grass
+          </span>
+          <span
+            class="badged poison"
+          >
+            poison
+          </span>
+        </div>
+        <div
+          class="stats"
+        >
+          <table
+            class="stats__table"
+          >
+            <tbody>
+              <tr>
+                <td>
+                  Hp
+                </td>
+                <td
+                  class="base-column"
+                >
+                  45
+                </td>
+                <td
+                  class="bar-column"
+                >
+                  <div
+                    class="bar-container shadow"
+                  >
+                    <div
+                      class="bar-container__bar bar-container__bar--Hp"
+                      style="width: 22.5%;"
+                    />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Attack
+                </td>
+                <td
+                  class="base-column"
+                >
+                  49
+                </td>
+                <td
+                  class="bar-column"
+                >
+                  <div
+                    class="bar-container shadow"
+                  >
+                    <div
+                      class="bar-container__bar bar-container__bar--Attack"
+                      style="width: 24.5%;"
+                    />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Defense
+                </td>
+                <td
+                  class="base-column"
+                >
+                  49
+                </td>
+                <td
+                  class="bar-column"
+                >
+                  <div
+                    class="bar-container shadow"
+                  >
+                    <div
+                      class="bar-container__bar bar-container__bar--Defense"
+                      style="width: 24.5%;"
+                    />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Special-Attack
+                </td>
+                <td
+                  class="base-column"
+                >
+                  65
+                </td>
+                <td
+                  class="bar-column"
+                >
+                  <div
+                    class="bar-container shadow"
+                  >
+                    <div
+                      class="bar-container__bar bar-container__bar--Special-Attack"
+                      style="width: 32.5%;"
+                    />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Special-Defense
+                </td>
+                <td
+                  class="base-column"
+                >
+                  65
+                </td>
+                <td
+                  class="bar-column"
+                >
+                  <div
+                    class="bar-container shadow"
+                  >
+                    <div
+                      class="bar-container__bar bar-container__bar--Special-Defense"
+                      style="width: 32.5%;"
+                    />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Speed
+                </td>
+                <td
+                  class="base-column"
+                >
+                  45
+                </td>
+                <td
+                  class="bar-column"
+                >
+                  <div
+                    class="bar-container shadow"
+                  >
+                    <div
+                      class="bar-container__bar bar-container__bar--Speed"
+                      style="width: 22.5%;"
+                    />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Testing Pokemon list view should renders a list of pokemons initially 1`] = `
+<div>
+  <h1
+    class="title"
+  >
+    Pokemons List
+  </h1>
+  <div
+    class="searchbar-container"
+  >
+    <i
+      class="bi bi-search searchbar-container__icon"
+    />
+    <input
+      class="searchbar-container__input"
+      placeholder="Search ..."
+      type="text"
+    />
+  </div>
+  <div
+    class="main-container"
+  >
+    <div
+      class="pagination"
+    >
+      <button
+        class="pagination__button shadow pagination__button--active "
+        type="button"
+      >
+        1
+      </button>
+      <button
+        class="pagination__button shadow  "
+        type="button"
+      >
+        2
+      </button>
+      <button
+        class="pagination__button shadow  "
+        type="button"
+      >
+        3
+      </button>
+      <button
+        class="pagination__button shadow  "
+        type="button"
+      >
+        4
+      </button>
+      <button
+        class="pagination__button shadow  "
+        type="button"
+      >
+        5
+      </button>
+    </div>
+    <div
+      class="cards-container"
+    >
+      <button
+        class="card shadow"
+        name="bulbasaur"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Bulbasaur
+        </p>
+        <p>
+          <span
+            class="badged grass"
+          >
+            grass
+          </span>
+          <span
+            class="badged poison"
+          >
+            poison
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="ivysaur"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Ivysaur
+        </p>
+        <p>
+          <span
+            class="badged grass"
+          >
+            grass
+          </span>
+          <span
+            class="badged poison"
+          >
+            poison
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="venusaur"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Venusaur
+        </p>
+        <p>
+          <span
+            class="badged grass"
+          >
+            grass
+          </span>
+          <span
+            class="badged poison"
+          >
+            poison
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="charmander"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Charmander
+        </p>
+        <p>
+          <span
+            class="badged fire"
+          >
+            fire
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="charmeleon"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Charmeleon
+        </p>
+        <p>
+          <span
+            class="badged fire"
+          >
+            fire
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="charizard"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Charizard
+        </p>
+        <p>
+          <span
+            class="badged fire"
+          >
+            fire
+          </span>
+          <span
+            class="badged flying"
+          >
+            flying
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="squirtle"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Squirtle
+        </p>
+        <p>
+          <span
+            class="badged water"
+          >
+            water
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="wartortle"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/8.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Wartortle
+        </p>
+        <p>
+          <span
+            class="badged water"
+          >
+            water
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="blastoise"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Blastoise
+        </p>
+        <p>
+          <span
+            class="badged water"
+          >
+            water
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="caterpie"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Caterpie
+        </p>
+        <p>
+          <span
+            class="badged bug"
+          >
+            bug
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="metapod"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/11.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Metapod
+        </p>
+        <p>
+          <span
+            class="badged bug"
+          >
+            bug
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="butterfree"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/12.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Butterfree
+        </p>
+        <p>
+          <span
+            class="badged bug"
+          >
+            bug
+          </span>
+          <span
+            class="badged flying"
+          >
+            flying
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="weedle"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/13.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Weedle
+        </p>
+        <p>
+          <span
+            class="badged bug"
+          >
+            bug
+          </span>
+          <span
+            class="badged poison"
+          >
+            poison
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="kakuna"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/14.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Kakuna
+        </p>
+        <p>
+          <span
+            class="badged bug"
+          >
+            bug
+          </span>
+          <span
+            class="badged poison"
+          >
+            poison
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="beedrill"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/15.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Beedrill
+        </p>
+        <p>
+          <span
+            class="badged bug"
+          >
+            bug
+          </span>
+          <span
+            class="badged poison"
+          >
+            poison
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="pidgey"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/16.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Pidgey
+        </p>
+        <p>
+          <span
+            class="badged normal"
+          >
+            normal
+          </span>
+          <span
+            class="badged flying"
+          >
+            flying
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="pidgeotto"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/17.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Pidgeotto
+        </p>
+        <p>
+          <span
+            class="badged normal"
+          >
+            normal
+          </span>
+          <span
+            class="badged flying"
+          >
+            flying
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="pidgeot"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/18.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Pidgeot
+        </p>
+        <p>
+          <span
+            class="badged normal"
+          >
+            normal
+          </span>
+          <span
+            class="badged flying"
+          >
+            flying
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="rattata"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/19.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Rattata
+        </p>
+        <p>
+          <span
+            class="badged normal"
+          >
+            normal
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="raticate"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/20.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Raticate
+        </p>
+        <p>
+          <span
+            class="badged normal"
+          >
+            normal
+          </span>
+        </p>
+      </button>
+    </div>
+    <div
+      class="pagination"
+    >
+      <button
+        class="pagination__button shadow pagination__button--active "
+        type="button"
+      >
+        1
+      </button>
+      <button
+        class="pagination__button shadow  "
+        type="button"
+      >
+        2
+      </button>
+      <button
+        class="pagination__button shadow  "
+        type="button"
+      >
+        3
+      </button>
+      <button
+        class="pagination__button shadow  "
+        type="button"
+      >
+        4
+      </button>
+      <button
+        class="pagination__button shadow  "
+        type="button"
+      >
+        5
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Testing Pokemon list view should shows pokemon of page 2 1`] = `
+<div>
+  <h1
+    class="title"
+  >
+    Pokemons List
+  </h1>
+  <div
+    class="searchbar-container"
+  >
+    <i
+      class="bi bi-search searchbar-container__icon"
+    />
+    <input
+      class="searchbar-container__input"
+      placeholder="Search ..."
+      type="text"
+    />
+  </div>
+  <div
+    class="main-container"
+  >
+    <div
+      class="pagination"
+    >
+      <button
+        class="pagination__button shadow  "
+        type="button"
+      >
+        1
+      </button>
+      <button
+        class="pagination__button shadow pagination__button--active "
+        type="button"
+      >
+        2
+      </button>
+      <button
+        class="pagination__button shadow  "
+        type="button"
+      >
+        3
+      </button>
+      <button
+        class="pagination__button shadow  "
+        type="button"
+      >
+        4
+      </button>
+      <button
+        class="pagination__button shadow  "
+        type="button"
+      >
+        5
+      </button>
+    </div>
+    <div
+      class="cards-container"
+    >
+      <button
+        class="card shadow"
+        name="spearow"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/21.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Spearow
+        </p>
+        <p>
+          <span
+            class="badged normal"
+          >
+            normal
+          </span>
+          <span
+            class="badged flying"
+          >
+            flying
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="fearow"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/22.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Fearow
+        </p>
+        <p>
+          <span
+            class="badged normal"
+          >
+            normal
+          </span>
+          <span
+            class="badged flying"
+          >
+            flying
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="ekans"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/23.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Ekans
+        </p>
+        <p>
+          <span
+            class="badged poison"
+          >
+            poison
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="arbok"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/24.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Arbok
+        </p>
+        <p>
+          <span
+            class="badged poison"
+          >
+            poison
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="pikachu"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Pikachu
+        </p>
+        <p>
+          <span
+            class="badged electric"
+          >
+            electric
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="raichu"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/26.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Raichu
+        </p>
+        <p>
+          <span
+            class="badged electric"
+          >
+            electric
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="sandshrew"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/27.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Sandshrew
+        </p>
+        <p>
+          <span
+            class="badged ground"
+          >
+            ground
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="sandslash"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/28.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Sandslash
+        </p>
+        <p>
+          <span
+            class="badged ground"
+          >
+            ground
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="nidoran-f"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/29.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Nidoran-f
+        </p>
+        <p>
+          <span
+            class="badged poison"
+          >
+            poison
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="nidorina"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/30.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Nidorina
+        </p>
+        <p>
+          <span
+            class="badged poison"
+          >
+            poison
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="nidoqueen"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/31.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Nidoqueen
+        </p>
+        <p>
+          <span
+            class="badged poison"
+          >
+            poison
+          </span>
+          <span
+            class="badged ground"
+          >
+            ground
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="nidoran-m"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/32.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Nidoran-m
+        </p>
+        <p>
+          <span
+            class="badged poison"
+          >
+            poison
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="nidorino"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/33.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Nidorino
+        </p>
+        <p>
+          <span
+            class="badged poison"
+          >
+            poison
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="nidoking"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/34.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Nidoking
+        </p>
+        <p>
+          <span
+            class="badged poison"
+          >
+            poison
+          </span>
+          <span
+            class="badged ground"
+          >
+            ground
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="clefairy"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/35.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Clefairy
+        </p>
+        <p>
+          <span
+            class="badged fairy"
+          >
+            fairy
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="clefable"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/36.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Clefable
+        </p>
+        <p>
+          <span
+            class="badged fairy"
+          >
+            fairy
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="vulpix"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/37.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Vulpix
+        </p>
+        <p>
+          <span
+            class="badged fire"
+          >
+            fire
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="ninetales"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/38.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Ninetales
+        </p>
+        <p>
+          <span
+            class="badged fire"
+          >
+            fire
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="jigglypuff"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/39.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Jigglypuff
+        </p>
+        <p>
+          <span
+            class="badged normal"
+          >
+            normal
+          </span>
+          <span
+            class="badged fairy"
+          >
+            fairy
+          </span>
+        </p>
+      </button>
+      <button
+        class="card shadow"
+        name="wigglytuff"
+        type="button"
+      >
+        <div
+          class="img-container"
+        >
+          <img
+            alt=""
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/40.png"
+          />
+        </div>
+        <p
+          class="card-title"
+        >
+          Wigglytuff
+        </p>
+        <p>
+          <span
+            class="badged normal"
+          >
+            normal
+          </span>
+          <span
+            class="badged fairy"
+          >
+            fairy
+          </span>
+        </p>
+      </button>
+    </div>
+    <div
+      class="pagination"
+    >
+      <button
+        class="pagination__button shadow  "
+        type="button"
+      >
+        1
+      </button>
+      <button
+        class="pagination__button shadow pagination__button--active "
+        type="button"
+      >
+        2
+      </button>
+      <button
+        class="pagination__button shadow  "
+        type="button"
+      >
+        3
+      </button>
+      <button
+        class="pagination__button shadow  "
+        type="button"
+      >
+        4
+      </button>
+      <button
+        class="pagination__button shadow  "
+        type="button"
+      >
+        5
+      </button>
+    </div>
+  </div>
+</div>
+`;

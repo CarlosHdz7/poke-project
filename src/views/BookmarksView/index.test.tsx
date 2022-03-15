@@ -1,25 +1,29 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import * as reactRedux from 'react-redux';
-import store from 'store';
 import AppRouter from 'views/AppRouter';
 import BookmarksView from '.';
 import bookmarksMock from 'mocks/bookmarksMock';
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 
 describe('Testing bookmarks page', () => {
-  const useSelectorMock = jest.spyOn(reactRedux, 'useSelector');
-  const useDispatchMock = jest.spyOn(reactRedux, 'useDispatch');
-
-  beforeEach(() => {
-    useSelectorMock.mockClear();
-    useDispatchMock.mockClear();
+  afterEach(() => {
+    jest.restoreAllMocks();
   });
 
-  it('should render saved bookmars', async () => {
-    useSelectorMock.mockReturnValue(bookmarksMock);
+  const middlewares: any = [thunk];
+  const mockStore = configureStore(middlewares);
+  const initialState = {
+    bookmarks: bookmarksMock,
+  };
+  const store = mockStore(initialState);
 
+  store.dispatch = jest.fn();
+
+  it('should render saved bookmars', async () => {
     render(
       <Provider store={store}>
         <BrowserRouter>
@@ -30,32 +34,13 @@ describe('Testing bookmarks page', () => {
     );
 
     expect(screen.getByRole('heading', { name: 'Bookmarks' })).not.toBeNull();
-    expect(screen.getByText(/Pikachu/i)).not.toBeNull();
-    expect(screen.getByText(/Bulbasaur/i)).not.toBeNull();
-  });
-
-  it('should delete a bookmark', async () => {
-    const dispatchMock = jest.fn(jest.fn());
-    useSelectorMock.mockReturnValue(bookmarksMock);
-    useDispatchMock.mockReturnValue(dispatchMock);
-
-    render(
-      <Provider store={store}>
-        <BrowserRouter>
-          <BookmarksView />
-        </BrowserRouter>
-      </Provider>,
-    );
-
-    expect(screen.getByText(/Bulbasaur/i)).not.toBeNull();
-    const deleteButtons = screen.getAllByRole('button');
-    fireEvent.click(deleteButtons[0]);
-    expect(dispatchMock).toHaveBeenCalled();
+    expect(screen.getByText(/Pikachu/i)).toBeInTheDocument();
+    expect(screen.getByText(/Bulbasaur/i)).toBeInTheDocument();
   });
 
   it('should show no results message', async () => {
+    const useSelectorMock = jest.spyOn(reactRedux, 'useSelector');
     useSelectorMock.mockReturnValue([]);
-
     render(
       <Provider store={store}>
         <BrowserRouter>

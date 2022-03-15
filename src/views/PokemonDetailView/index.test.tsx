@@ -1,11 +1,10 @@
 import React from 'react';
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import * as reactRedux from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import store from 'store';
 import AppRouter from 'views/AppRouter';
-import PokemonDetailView from 'views/PokemonDetailView';
 import bookmarksMock from 'mocks/bookmarksMock';
 import userEvent from '@testing-library/user-event';
 

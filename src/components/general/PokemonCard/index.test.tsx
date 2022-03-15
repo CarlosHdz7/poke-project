@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import * as reactRedux from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import store from 'store';
@@ -7,14 +7,16 @@ import PokemonCard from '.';
 import bookmarksMock from 'mocks/bookmarksMock';
 
 describe('Testing Pokemon list view', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
+  afterEach(() => {
+    jest.restoreAllMocks();
   });
 
-  const useSelectorMock = jest.spyOn(reactRedux, 'useSelector');
+  beforeEach(() => {
+    const useSelectorMock = jest.spyOn(reactRedux, 'useSelector');
+    useSelectorMock.mockReturnValue(bookmarksMock);
+  });
 
   it('should render a card with the basic information of a pokemon', async () => {
-    useSelectorMock.mockReturnValue(bookmarksMock);
     const card = render(
       <reactRedux.Provider store={store}>
         <BrowserRouter>
@@ -35,7 +37,6 @@ describe('Testing Pokemon list view', () => {
   });
 
   it('should show a heart inside the card', async () => {
-    useSelectorMock.mockReturnValue(bookmarksMock);
     render(
       <reactRedux.Provider store={store}>
         <BrowserRouter>
@@ -54,7 +55,6 @@ describe('Testing Pokemon list view', () => {
   });
 
   it('should not show a heart inside the card', async () => {
-    useSelectorMock.mockReturnValue(bookmarksMock);
     render(
       <reactRedux.Provider store={store}>
         <BrowserRouter>

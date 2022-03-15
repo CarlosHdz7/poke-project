@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import store from 'store';
@@ -46,8 +46,10 @@ describe('Testing 404 page', () => {
       </Provider>,
     );
     const button = screen.getByText(/Go back to list/i);
-    fireEvent.click(button);
+    userEvent.click(button);
 
-    expect(await screen.findByText('Pokemons List')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.queryByText('Pokemons List')).toBeInTheDocument();
+    });
   });
 });

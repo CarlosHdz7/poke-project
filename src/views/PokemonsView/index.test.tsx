@@ -6,6 +6,7 @@ import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import store from 'store';
 import AppRouter from 'views/AppRouter';
 import userEvent from '@testing-library/user-event';
+import renderer from 'react-test-renderer';
 
 describe('Testing Pokemon list view', () => {
   beforeEach(() => {
@@ -13,10 +14,8 @@ describe('Testing Pokemon list view', () => {
     jest.spyOn(console, 'error').mockImplementation(() => {});
   });
 
-  afterEach(cleanup);
-
   it('should renders a list of pokemons initially', async () => {
-    render(
+    const { container } = render(
       <Provider store={store}>
         <BrowserRouter>
           <PokemonsView />
@@ -27,11 +26,12 @@ describe('Testing Pokemon list view', () => {
     await waitFor(() => {
       expect(screen.queryByText('Bulbasaur')).toBeInTheDocument();
       expect(screen.queryByText('Raticate')).toBeInTheDocument();
+      expect(container).toMatchSnapshot();
     });
   });
 
   it('should shows pokemon of page 2', async () => {
-    render(
+    const { container } = render(
       <Provider store={store}>
         <BrowserRouter>
           <PokemonsView />
@@ -44,6 +44,7 @@ describe('Testing Pokemon list view', () => {
 
     await waitFor(() => {
       expect(screen.queryByText('Spearow')).toBeInTheDocument();
+      expect(container).toMatchSnapshot();
     });
   });
 
@@ -102,7 +103,7 @@ describe('Testing Pokemon list view', () => {
   });
 
   it('should redirect to pokemon details', async () => {
-    render(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/pokemons']}>
           <AppRouter />
@@ -117,6 +118,7 @@ describe('Testing Pokemon list view', () => {
       expect(screen.queryByText(/Name: Bulbasaur/i)).toBeInTheDocument();
       expect(screen.queryByText('Attack')).toBeInTheDocument();
       expect(screen.queryByText('Defense')).toBeInTheDocument();
+      expect(container).toMatchSnapshot();
     });
   });
 });
