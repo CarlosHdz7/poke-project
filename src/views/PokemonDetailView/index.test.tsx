@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import * as reactRedux from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
@@ -25,11 +25,14 @@ describe('Testing Pokemon Detail view', () => {
         </MemoryRouter>
       </Provider>,
     );
-    expect(await screen.findByText(/Name: Bulbasaur/i)).not.toBeNull();
-    expect(screen.getByText('Attack')).not.toBeNull();
-    expect(screen.getByText('Defense')).not.toBeNull();
-    const icon = document.querySelector('.like-icon-2');
-    expect(icon).not.toBeNull();
+
+    await waitFor(() => {
+      expect(screen.queryByText(/Name: Bulbasaur/i)).toBeInTheDocument();
+      expect(screen.queryByText('Attack')).toBeInTheDocument();
+      expect(screen.queryByText('Defense')).toBeInTheDocument();
+      const icon = document.querySelector('.like-icon-2');
+      expect(icon).toBeInTheDocument();
+    });
   });
 
   it('should go back to previous page (Pokemons List)', async () => {
@@ -43,16 +46,21 @@ describe('Testing Pokemon Detail view', () => {
       </Provider>,
     );
 
-    expect(await screen.findByText(/Name: Bulbasaur/i)).toBeInTheDocument();
-    expect(screen.getByText('Attack')).toBeInTheDocument();
-    expect(screen.getByText('Defense')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.queryByText(/Name: Bulbasaur/i)).toBeInTheDocument();
+      expect(screen.queryByText('Attack')).toBeInTheDocument();
+      expect(screen.queryByText('Defense')).toBeInTheDocument();
+    });
 
-    const icon = document.querySelector('.bi-arrow-left-circle-fill');
+    const icon = document.querySelector('.bi-arrow-left-circle-fill') as Element;
 
-    if (icon) {
-      fireEvent.click(icon);
-      expect(await screen.findByText(/Pokemons List/i)).toBeInTheDocument();
-    }
+    fireEvent.click(icon);
+
+    await waitFor(() => {
+      expect(screen.queryByText(/Pokemons List/i)).toBeInTheDocument();
+      expect(screen.queryByText(/Bulbasaur/i)).toBeInTheDocument();
+      expect(screen.queryByText(/Raticate/i)).toBeInTheDocument();
+    });
   });
 
   it('should redirect to 404', async () => {

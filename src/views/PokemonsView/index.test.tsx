@@ -100,4 +100,23 @@ describe('Testing Pokemon list view', () => {
       { timeout: 3000 },
     );
   });
+
+  it('should redirect to pokemon details', async () => {
+    render(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/pokemons']}>
+          <AppRouter />
+        </MemoryRouter>
+      </Provider>,
+    );
+
+    const card = await screen.findByRole('button', { name: /Bulbasaur/i });
+    userEvent.click(card);
+
+    await waitFor(() => {
+      expect(screen.queryByText(/Name: Bulbasaur/i)).toBeInTheDocument();
+      expect(screen.queryByText('Attack')).toBeInTheDocument();
+      expect(screen.queryByText('Defense')).toBeInTheDocument();
+    });
+  });
 });

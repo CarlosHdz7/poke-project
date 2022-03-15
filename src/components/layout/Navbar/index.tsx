@@ -12,6 +12,8 @@ const Navbar = () => {
 
   const showSideBar = () => setSideBar(!sidebar);
 
+  // ToDo: Optimize this
+
   return (
     <>
       <div className="navbar shadow">
@@ -42,9 +44,10 @@ const Navbar = () => {
 
       <nav className={sidebar ? 'side-menu-container active' : 'side-menu-container'}>
         <ul className="side-menu-items">
-          <button type="button" className="side-menu__item--button" onClick={showSideBar}>
+          <button type="button" className="side-menu__item--button side-button-close" onClick={showSideBar}>
             <i className="bi bi-x-lg" />
           </button>
+          <li className="side-menu__item side-bar-text">Side Bar Options</li>
           <li className="side-menu__item">
             <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')} onClick={showSideBar}>
               <span>PokeApi</span>
