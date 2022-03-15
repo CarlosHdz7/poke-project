@@ -7,15 +7,15 @@ import store from 'store';
 import AppRouter from 'views/AppRouter';
 import PokemonDetailView from 'views/PokemonDetailView';
 import bookmarksMock from 'mocks/bookmarksMock';
+import userEvent from '@testing-library/user-event';
 
 describe('Testing Pokemon Detail view', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
+  afterEach(() => {
+    jest.restoreAllMocks();
   });
 
-  const useSelectorMock = jest.spyOn(reactRedux, 'useSelector');
-
-  it('should shows pokemon details', async () => {
+  it('should shows pokemon details with filled heart', async () => {
+    const useSelectorMock = jest.spyOn(reactRedux, 'useSelector');
     useSelectorMock.mockReturnValue(bookmarksMock);
 
     render(
@@ -30,14 +30,33 @@ describe('Testing Pokemon Detail view', () => {
       expect(screen.queryByText(/Name: Bulbasaur/i)).toBeInTheDocument();
       expect(screen.queryByText('Attack')).toBeInTheDocument();
       expect(screen.queryByText('Defense')).toBeInTheDocument();
-      const icon = document.querySelector('.like-icon-2');
+      const icon = document.querySelector('.bi-heart-fill');
+      expect(icon).toBeInTheDocument();
+    });
+  });
+
+  it('should shows pokemon details without filled heart', async () => {
+    const useSelectorMock = jest.spyOn(reactRedux, 'useSelector');
+    useSelectorMock.mockReturnValue(bookmarksMock);
+
+    render(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/pokemons/2']}>
+          <AppRouter />
+        </MemoryRouter>
+      </Provider>,
+    );
+
+    await waitFor(() => {
+      expect(screen.queryByText(/Name: Ivysaur/i)).toBeInTheDocument();
+      expect(screen.queryByText('Attack')).toBeInTheDocument();
+      expect(screen.queryByText('Defense')).toBeInTheDocument();
+      const icon = document.querySelector('.bi-heart');
       expect(icon).toBeInTheDocument();
     });
   });
 
   it('should go back to previous page (Pokemons List)', async () => {
-    useSelectorMock.mockReturnValue(bookmarksMock);
-
     render(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/pokemons', '/pokemons/1']}>
@@ -64,7 +83,6 @@ describe('Testing Pokemon Detail view', () => {
   });
 
   it('should redirect to 404', async () => {
-    useSelectorMock.mockReturnValue(bookmarksMock);
     render(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/pokemons/error']}>
@@ -74,5 +92,35 @@ describe('Testing Pokemon Detail view', () => {
     );
 
     expect(await screen.findByText('Pokemon not found')).toBeInTheDocument();
+  });
+
+  it('should add/remove bookmark', async () => {
+    const { container } = render(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/pokemons/2']}>
+          <AppRouter />
+        </MemoryRouter>
+      </Provider>,
+    );
+
+    await waitFor(() => {
+      expect(screen.queryByText(/Name: Ivysaur/i)).toBeInTheDocument();
+    });
+
+    const iconAdd = container.querySelector('.bi-heart') as Element;
+    userEvent.click(iconAdd);
+
+    await waitFor(() => {
+      const iconRemove = container.querySelector('.bi-heart-fill') as Element;
+      expect(iconRemove).toBeInTheDocument();
+    });
+
+    const iconAdd2 = container.querySelector('.bi-heart-fill') as Element;
+    userEvent.click(iconAdd2);
+
+    await waitFor(() => {
+      const iconAdd2 = container.querySelector('.bi-heart') as Element;
+      expect(iconAdd2).toBeInTheDocument();
+    });
   });
 });
