@@ -1,17 +1,19 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, render, screen, waitFor } from '@testing-library/react';
 import PokemonsView from '.';
-import { renderWithMemoryRouter } from 'utils/wrapper';
 import { Provider } from 'react-redux';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import store from 'store';
 import AppRouter from 'views/AppRouter';
+import userEvent from '@testing-library/user-event';
 
 describe('Testing Pokemon list view', () => {
   beforeEach(() => {
     jest.spyOn(console, 'warn').mockImplementation(() => {});
     jest.spyOn(console, 'error').mockImplementation(() => {});
   });
+
+  afterEach(cleanup);
 
   it('should renders a list of pokemons initially', async () => {
     render(
@@ -21,10 +23,11 @@ describe('Testing Pokemon list view', () => {
         </BrowserRouter>
       </Provider>,
     );
-    await screen.findByText('Bulbasaur');
-    screen.getByText('Ivysaur');
-    screen.getByText('Charmander');
-    screen.getByText('Raticate');
+
+    await waitFor(() => {
+      expect(screen.queryByText('Bulbasaur')).toBeInTheDocument();
+      expect(screen.queryByText('Raticate')).toBeInTheDocument();
+    });
   });
 
   it('should shows pokemon of page 2', async () => {
@@ -37,51 +40,64 @@ describe('Testing Pokemon list view', () => {
     );
     const buttons = await screen.findAllByText(/2/i);
 
-    fireEvent.click(buttons[0]);
-    await screen.findByText('Spearow');
+    userEvent.click(buttons[0]);
+
+    await waitFor(() => {
+      expect(screen.queryByText('Spearow')).toBeInTheDocument();
+    });
   });
 
-  it('should redirect a pokemon details', async () => {
+  it('should search a pokemon', async () => {
     render(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/']}>
-          <PokemonsView />
           <AppRouter />
         </MemoryRouter>
       </Provider>,
     );
 
-    const card = await screen.findByRole('button', {
-      name: /Bulbasaur/i,
-    });
-    fireEvent.click(card);
+    await screen.findByText(/Bulbasaur/i);
+    const searchBar = screen.getByPlaceholderText(/Search/i);
 
-    expect(await screen.findByText(/Name: Bulbasaur/i)).toBeInTheDocument();
-    expect(screen.getByText('Attack')).toBeInTheDocument();
-    expect(screen.getByText('Defense')).toBeInTheDocument();
-  });
+    userEvent.type(searchBar, 'Pika');
 
-  it('should search a pokemon', async () => {
-    renderWithMemoryRouter(<PokemonsView />, ['/'], true);
+    await waitFor(
+      () => {
+        expect(screen.queryByText(/Pikachu/i)).toBeInTheDocument();
+      },
+      { timeout: 3000 },
+    );
 
-    const searchBar = await screen.findAllByPlaceholderText(/Search/i);
+    userEvent.type(searchBar, '{backspace}{backspace}{backspace}{backspace}');
 
-    fireEvent.change(searchBar[0], { target: { value: 'Pikachu' } });
-    await new Promise((r) => setTimeout(r, 1000));
-    expect(await screen.findByText('Pikachu')).toBeInTheDocument();
-
-    fireEvent.change(searchBar[0], { target: { value: '' } });
-    await new Promise((r) => setTimeout(r, 1000));
-    expect(await screen.findByText('Bulbasaur')).toBeInTheDocument();
+    await waitFor(
+      () => {
+        expect(screen.queryByText(/Pikachu/i)).toBeNull();
+        expect(screen.queryByText(/Bulbasaur/i)).toBeInTheDocument();
+      },
+      { timeout: 3000 },
+    );
   });
 
   it('should show no results', async () => {
-    renderWithMemoryRouter(<PokemonsView />, ['/'], true);
+    render(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/']}>
+          <AppRouter />
+        </MemoryRouter>
+      </Provider>,
+    );
 
-    const searchBar = await screen.findAllByPlaceholderText(/Search/i);
+    await screen.findByText(/Bulbasaur/i);
+    const searchBar = screen.getByPlaceholderText(/Search/i);
 
-    fireEvent.change(searchBar[0], { target: { value: 'sfaasf' } });
-    await new Promise((r) => setTimeout(r, 1000));
-    expect(await screen.findByText(/No results/i)).toBeInTheDocument();
+    userEvent.type(searchBar, 'asadsfa');
+
+    await waitFor(
+      () => {
+        expect(screen.queryByText(/No results/i)).toBeInTheDocument();
+      },
+      { timeout: 3000 },
+    );
   });
 });

@@ -28,8 +28,8 @@ describe('Testing Pokemon list view', () => {
       </reactRedux.Provider>,
     );
 
-    await card.findByText('Pikachu');
-    await card.findByText('electric');
+    expect(await card.findByText('Pikachu')).not.toBeNull();
+    expect(await card.findByText('electric')).not.toBeNull();
   });
 
   it('should show a heart inside the card', async () => {
@@ -95,4 +95,21 @@ describe('Testing Pokemon list view', () => {
     screen.findByText(/Hp/i);
     screen.findByText(/Attack/i);
   });
+
+  // it('should redirect to pokemon details', async () => {
+  //   render(
+  //     <Provider store={store}>
+  //       <MemoryRouter initialEntries={['/']}>
+  //         <AppRouter />
+  //       </MemoryRouter>
+  //     </Provider>,
+  //   );
+
+  //   const card = await screen.findByRole('button', { name: /Bulbasaur/i });
+  //   fireEvent.click(card);
+
+  //   expect(await screen.findByText(/Name: Bulbasaur/i)).toBeInTheDocument();
+  //   expect(screen.getByText('Attack')).toBeInTheDocument();
+  //   expect(screen.getByText('Defense')).toBeInTheDocument();
+  // });
 });

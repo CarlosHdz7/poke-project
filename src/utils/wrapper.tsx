@@ -22,7 +22,7 @@ const renderWithMemoryRouter = (ui: ReactElement, path: string[] = ['/'], withRo
   return render(
     <Provider store={store}>
       <MemoryRouter initialEntries={path}>
-        {ui}
+        {/* {ui} */}
         {withRouter && <AppRouter />}
       </MemoryRouter>
     </Provider>,
