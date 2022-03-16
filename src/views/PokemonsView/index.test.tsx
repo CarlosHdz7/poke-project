@@ -14,6 +14,7 @@ describe('Testing Pokemon list view', () => {
   });
 
   it('should renders a list of pokemons initially', async () => {
+    // Render
     const { container } = render(
       <Provider store={store}>
         <BrowserRouter>
@@ -22,6 +23,7 @@ describe('Testing Pokemon list view', () => {
       </Provider>,
     );
 
+    // Assertions
     await waitFor(() => {
       expect(screen.queryByText('Bulbasaur')).toBeInTheDocument();
       expect(screen.queryByText('Raticate')).toBeInTheDocument();
@@ -30,6 +32,7 @@ describe('Testing Pokemon list view', () => {
   });
 
   it('should shows pokemon of page 2', async () => {
+    // Render
     const { container } = render(
       <Provider store={store}>
         <BrowserRouter>
@@ -37,10 +40,12 @@ describe('Testing Pokemon list view', () => {
         </BrowserRouter>
       </Provider>,
     );
-    const buttons = await screen.findAllByText(/2/i);
 
+    // Interact / Act
+    const buttons = await screen.findAllByText(/2/i);
     userEvent.click(buttons[0]);
 
+    // Assertions
     await waitFor(() => {
       expect(screen.queryByText('Spearow')).toBeInTheDocument();
       expect(container).toMatchSnapshot();
@@ -110,7 +115,7 @@ describe('Testing Pokemon list view', () => {
       </Provider>,
     );
 
-    const card = await screen.findByRole('button', { name: /Bulbasaur/i });
+    const card = await screen.findByText(/Bulbasaur/i);
     userEvent.click(card);
 
     await waitFor(() => {

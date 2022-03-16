@@ -12,6 +12,28 @@ test('Description of the test', () => {
   expect(greeting).not.toBeNull();
 });
 
+// JEST
+//~ Test Launcher
+//~ describe
+//~ test
+//~ it
+//~ toMatchSnapShot
+//~ fireEvent
+//~ expect
+
+// TESTING LIBRARY TOOLS
+//~ render
+//~ screen
+//~ getBy
+//~ findBy
+//~ queryBy
+//~ userEvent
+//~ waitFor
+
+//~ REDUX
+//~ MemoryRouter
+//~ Provider
+
 // describe('Description of the block', () => {
 //   test('Description of the test', () => {
 //     // Render a component

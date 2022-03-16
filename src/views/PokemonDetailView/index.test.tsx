@@ -72,7 +72,7 @@ describe('Testing Pokemon Detail view', () => {
 
     const icon = document.querySelector('.bi-arrow-left-circle-fill') as Element;
 
-    fireEvent.click(icon);
+    userEvent.click(icon);
 
     await waitFor(() => {
       expect(screen.queryByText(/Pokemons List/i)).toBeInTheDocument();
