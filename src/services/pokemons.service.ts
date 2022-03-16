@@ -1,6 +1,6 @@
 import { IFilter } from 'interfaces/IFilter';
 import IPokemon from 'interfaces/IPokemon';
-import { get } from 'services/fetchData';
+import get from 'services/fetchData';
 
 const getAllPokemons = async (filter: IFilter) => {
   const url =

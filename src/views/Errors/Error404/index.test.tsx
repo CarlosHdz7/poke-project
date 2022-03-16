@@ -7,6 +7,7 @@ import Error404 from '.';
 import renderer from 'react-test-renderer';
 import userEvent from '@testing-library/user-event';
 import AppRouter from 'views/AppRouter';
+import { renderWithBrowseRouter, renderWithMemoryRouter } from 'utils/wrapper';
 
 describe('Testing 404 page', () => {
   it('should render correctly', async () => {
@@ -23,13 +24,14 @@ describe('Testing 404 page', () => {
   });
 
   it('should show the correct text', async () => {
-    render(
-      <Provider store={store}>
-        <BrowserRouter>
-          <Error404 />
-        </BrowserRouter>
-      </Provider>,
-    );
+    // render(
+    //   <Provider store={store}>
+    //     <BrowserRouter>
+    //       <Error404 />
+    //     </BrowserRouter>
+    //   </Provider>,
+    // );
+    renderWithBrowseRouter(<Error404 />);
 
     expect(screen.queryByText(/404/i)).not.toBe(null);
     expect(screen.queryByText(/Pokemon not found/i)).not.toBe(null);
@@ -37,14 +39,8 @@ describe('Testing 404 page', () => {
   });
 
   it('should redirect to pokemons list', async () => {
-    render(
-      <Provider store={store}>
-        <BrowserRouter>
-          <Error404 />
-          <AppRouter />
-        </BrowserRouter>
-      </Provider>,
-    );
+    renderWithMemoryRouter(['/404']);
+
     const button = screen.getByText(/Go back to list/i);
     userEvent.click(button);
 

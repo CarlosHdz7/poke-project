@@ -1,5 +1,5 @@
 import React, { MutableRefObject, useEffect, useRef, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import _ from 'lodash';
 
 import Loader from 'components/general/Loader';
@@ -12,6 +12,7 @@ import './index.scss';
 
 const PokemonsView = () => {
   const [search, setSearch] = useSearchParams();
+  const navigate = useNavigate();
   const [nameState, setNameState] = useState(search.get('name')?.trim() || '');
   const [pageState, setPageState] = useState(search.get('page')?.trim() || '1');
   const { data: pokemons, loading, error } = useFetchPokemons({ name: nameState, page: pageState });
@@ -20,6 +21,10 @@ const PokemonsView = () => {
   useEffect(() => {
     inputRef.current.value = nameState;
   }, [nameState]);
+
+  useEffect(() => {
+    if (error === 404) navigate(`/404`);
+  }, [error]);
 
   const handleSearch = _.debounce(() => {
     const pokemonName = inputRef.current.value.trim();
@@ -65,8 +70,6 @@ const PokemonsView = () => {
       {!pokemons?.length && !loading && <p className="message">No results X_X</p>}
 
       {loading && <Loader />}
-
-      {error && <p className="message">An error has ocurred ...</p>}
     </>
   );
 };

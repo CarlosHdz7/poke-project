@@ -7,23 +7,19 @@ import { Provider } from 'react-redux';
 import store from 'store';
 import AppRouter from 'views/AppRouter';
 
-const renderWithBrowseRouter = (ui: ReactElement, withRouter: boolean = false) => {
+const renderWithBrowseRouter = (component: ReactElement) => {
   return render(
     <Provider store={store}>
-      <BrowserRouter>
-        {ui}
-        {withRouter && <AppRouter />}
-      </BrowserRouter>
+      <BrowserRouter>{component}</BrowserRouter>
     </Provider>,
   );
 };
 
-const renderWithMemoryRouter = (ui: ReactElement, path: string[] = ['/'], withRouter: boolean = false) => {
+const renderWithMemoryRouter = (path: string[] = ['/']) => {
   return render(
     <Provider store={store}>
       <MemoryRouter initialEntries={path}>
-        {/* {ui} */}
-        {withRouter && <AppRouter />}
+        <AppRouter />
       </MemoryRouter>
     </Provider>,
   );

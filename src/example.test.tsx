@@ -6,7 +6,7 @@ test('Description of the test', () => {
   render(<p>Hello World</p>);
 
   // Get elements like a normal user do/ Interact with the element
-  const greeting = screen.getByText(/Hello World/i);
+  const greeting = screen.getByText(/Hello/i);
 
   // Do some assertions
   expect(greeting).not.toBeNull();
@@ -31,6 +31,7 @@ test('Description of the test', () => {
 //~ waitFor
 
 //~ REDUX
+//~ Browser
 //~ MemoryRouter
 //~ Provider
 

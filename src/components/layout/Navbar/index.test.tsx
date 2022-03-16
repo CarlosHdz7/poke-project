@@ -6,18 +6,21 @@ import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import store from 'store';
 import AppRouter from 'views/AppRouter';
 import userEvent from '@testing-library/user-event';
+import { renderWithMemoryRouter } from 'utils/wrapper';
 
 describe('Testing Navbar', () => {
   afterEach(cleanup);
 
   it('should render correctly', async () => {
-    render(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={['/pokemons']}>
-          <AppRouter />
-        </MemoryRouter>
-      </Provider>,
-    );
+    // render(
+    //   <Provider store={store}>
+    //     <MemoryRouter initialEntries={['/pokemons']}>
+    //       <AppRouter />
+    //     </MemoryRouter>
+    //   </Provider>,
+    // );
+
+    renderWithMemoryRouter(['/pokemons']);
 
     expect(screen.queryAllByText(/PokeApi/i)).toHaveLength(2);
     expect(screen.queryAllByText(/Bookmarks/i)).toHaveLength(2);
@@ -25,13 +28,7 @@ describe('Testing Navbar', () => {
   });
 
   it('should show sidebar', async () => {
-    render(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={['/pokemons']}>
-          <AppRouter />
-        </MemoryRouter>
-      </Provider>,
-    );
+    renderWithMemoryRouter(['/pokemons']);
 
     expect(screen.queryAllByText(/PokeApi/i)).toHaveLength(2);
     expect(screen.queryAllByText(/Bookmarks/i)).toHaveLength(2);
@@ -45,13 +42,7 @@ describe('Testing Navbar', () => {
   });
 
   it('should hide sidebar', async () => {
-    render(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={['/pokemons']}>
-          <AppRouter />
-        </MemoryRouter>
-      </Provider>,
-    );
+    renderWithMemoryRouter(['/pokemons']);
 
     const sideButton = document.querySelector('.side-button') as Element;
     userEvent.click(sideButton);

@@ -17,14 +17,4 @@ const get = async <P>(path: string, config?: RequestInit): Promise<P> => {
   return http<P>(path, init);
 };
 
-const post = async <B, P>(path: string, body: B, config?: RequestInit): Promise<P> => {
-  const init = { method: 'post', body: JSON.stringify(body), ...config };
-  return http<P>(path, init);
-};
-
-const put = async <B, P>(path: string, body: B, config?: RequestInit): Promise<P> => {
-  const init = { method: 'put', body: JSON.stringify(body), ...config };
-  return http<P>(path, init);
-};
-
-export { get, post, put };
+export default get;
