@@ -1,6 +1,6 @@
+import React from 'react';
 import { IBookmark } from 'interfaces/IBookmark';
 import bookmarksMock from 'mocks/bookmarksMock';
-import React from 'react';
 import bookmarksReducer from './bookmarks.reducer';
 
 describe('Testing bookmark reducer', () => {
