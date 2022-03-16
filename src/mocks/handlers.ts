@@ -1,5 +1,5 @@
-import IPokemon from 'interfaces/IPokemon';
 import { rest } from 'msw';
+import IPokemon from 'interfaces/IPokemon';
 import pokemonsMock from '../db.json';
 
 const getPokemon = (id: string | readonly string[]) => {
@@ -15,10 +15,6 @@ const getPokemon = (id: string | readonly string[]) => {
 };
 
 const handlers = [
-  //   rest.get(`${process.env.REACT_APP_BASE_URL}/pokemons`, (req, res, ctx) =>
-  //     res(ctx.status(200), ctx.json(pokemonsMock.pokemons)),
-  //   ),
-
   rest.get(`${process.env.REACT_APP_BASE_URL}/pokemons/:id`, (req, res, ctx) => {
     const { id } = req.params;
     const data = getPokemon(id);

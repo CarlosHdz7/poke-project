@@ -1,12 +1,11 @@
 import React from 'react';
-import { cleanup, render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import PokemonsView from '.';
 import { Provider } from 'react-redux';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import store from 'store';
 import AppRouter from 'views/AppRouter';
 import userEvent from '@testing-library/user-event';
-import renderer from 'react-test-renderer';
 
 describe('Testing Pokemon list view', () => {
   beforeEach(() => {
